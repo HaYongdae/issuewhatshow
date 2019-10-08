@@ -101,6 +101,64 @@ for list in listAll
 		저장 로직에 따라 file 저장
 ```
 
+## 각 업무분장 단위코드 최종 결과물 예시
+
+각각 분장하여 작업한 코드들의 최종 결과물은 아래 예시와 같이 하기로 결정하였다.
+
+```json
+[
+	{
+		'keyword': '에어핏 1&1 대란', 
+		'items': [
+			{
+				'title': "에어핏 1&amp;1 대란, 오퀴즈 이천만원이벤트 오전 11시 문제…'ㅇㄹㅂㄷㅌㄱ' 초...", 
+				'link': 'http://www.joongboo.com/news/articleView.html?idxno=363364790'
+			}, 
+			{
+				'title': "캐시슬라이드 '에어핏 1&amp;1 대란', 오전 11시 'ㅁㄹㅂㅅㅋㅍ' 정답 공개", 
+				'link': 'http://www.seoulwire.com/news/articleView.html?idxno=232347'
+			},
+			{
+				'title': '에어핏 1&amp;1 대란, 오퀴즈 11시 ㅇㄹㅂㄷㅌㄱ 정답은?',
+                'link': 'https://news.naver.com/main/read.nhnode=LSD&mid=sec&sid1=105&oid=417&aid=0000457485'
+            }
+        ]
+    }, 
+    {
+        'keyword': '에어핏1&1', 
+        'items': [
+            {
+                'title': "에어핏 1&amp;1 대란, 오퀴즈 이천만원이벤트 오전 11시 문제…'ㅇㄹㅂㄷㅌㄱ' 초...",
+                'link': 'http://www.joongboo.com/news/articleView.html?idxno=363364790'
+            },
+            {
+                'title': "캐시슬라이드 '에어핏 1&amp;1 대란', 오전 11시 'ㅁㄹㅂㅅㅋㅍ' 정답 공개",
+                'link': 'http://www.seoulwire.com/news/articleView.html?idxno=232347'},
+            {
+                'title': '에어핏 1&amp;1 대란, 오퀴즈 11시 ㅇㄹㅂㄷㅌㄱ 정답은?', 'link': 'https://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=417&aid=0000457485'
+            }
+        ]
+    }, 
+    {
+        'keyword': '유병재 8억칫솔',
+        'items': [
+            {
+                'title': '유병재 8억칫솔, ‘ㅊㅇㅁㅂㄱ’ 퀴즈 정답은?',
+                'link': 'https://news.naver.com/main/read.nhn?mode=LSD&
+mid=sec&sid1=102&oid=081&aid=0003034383'
+            },
+            {
+                'title': '유병재 8억칫솔, ㅂㄹㄹㅇㅌ 초성퀴즈 정답은?',
+                'link': 'http://www.kyeonggi.com/news/articleView.html?idxno=2175314'},
+            {
+                'title': "'유병재 8억칫솔' 초성퀴즈 등장…정답은?",
+                'link': 'http://www.yeongnam.com/mnews/newsview.do?mode=newsView&amp;newskey=20191008.990011104361242'
+            }
+        ]
+    }
+]
+```
+
 ## 추후 작업
 
 이 모든 과정이 완료 되면 html 파일을 전처리하여 순수 text 만으로 구성된 파일로 변환하는 코드를 작성해야한다. 그 부분은 다른 작업단위로 분리해서 진행하도록 한다.
