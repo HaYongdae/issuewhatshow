@@ -120,42 +120,44 @@ for list in listAll
 			},
 			{
 				'title': '에어핏 1&amp;1 대란, 오퀴즈 11시 ㅇㄹㅂㄷㅌㄱ 정답은?',
-                'link': 'https://news.naver.com/main/read.nhnode=LSD&mid=sec&sid1=105&oid=417&aid=0000457485'
-            }
-        ]
-    }, 
-    {
-        'keyword': '에어핏1&1', 
-        'items': [
-            {
-                'title': "에어핏 1&amp;1 대란, 오퀴즈 이천만원이벤트 오전 11시 문제…'ㅇㄹㅂㄷㅌㄱ' 초...",
-                'link': 'http://www.joongboo.com/news/articleView.html?idxno=363364790'
-            },
-            {
-                'title': "캐시슬라이드 '에어핏 1&amp;1 대란', 오전 11시 'ㅁㄹㅂㅅㅋㅍ' 정답 공개",
-                'link': 'http://www.seoulwire.com/news/articleView.html?idxno=232347'},
-            {
-                'title': '에어핏 1&amp;1 대란, 오퀴즈 11시 ㅇㄹㅂㄷㅌㄱ 정답은?', 'link': 'https://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=417&aid=0000457485'
-            }
-        ]
-    }, 
-    {
-        'keyword': '유병재 8억칫솔',
-        'items': [
-            {
-                'title': '유병재 8억칫솔, ‘ㅊㅇㅁㅂㄱ’ 퀴즈 정답은?',
-                'link': 'https://news.naver.com/main/read.nhn?mode=LSD&
+				'link': 'https://news.naver.com/main/read.nhnode=LSD&mid=sec&sid1=105&oid=417&aid=0000457485'
+			}
+		]
+	}, 
+	{
+		'keyword': '에어핏1&1', 
+		'items': [
+			{
+				'title': "에어핏 1&amp;1 대란, 오퀴즈 이천만원이벤트 오전 11시 문제…'ㅇㄹㅂㄷㅌㄱ' 초...",
+				'link': 'http://www.joongboo.com/news/articleView.html?idxno=363364790'
+			},
+			{
+				'title': "캐시슬라이드 '에어핏 1&amp;1 대란', 오전 11시 'ㅁㄹㅂㅅㅋㅍ' 정답 공개",
+				'link': 'http://www.seoulwire.com/news/articleView.html?idxno=232347'
+			},
+			{
+				'title': '에어핏 1&amp;1 대란, 오퀴즈 11시 ㅇㄹㅂㄷㅌㄱ 정답은?', 'link': 'https://news.naver.com/main/read.nhn?mode=LSD&mid=sec&sid1=105&oid=417&aid=0000457485'
+			}
+		]
+	}, 
+	{
+		'keyword': '유병재 8억칫솔',
+		'items': [
+			{
+				'title': '유병재 8억칫솔, ‘ㅊㅇㅁㅂㄱ’ 퀴즈 정답은?',
+				'link': 'https://news.naver.com/main/read.nhn?mode=LSD&
 mid=sec&sid1=102&oid=081&aid=0003034383'
-            },
-            {
-                'title': '유병재 8억칫솔, ㅂㄹㄹㅇㅌ 초성퀴즈 정답은?',
-                'link': 'http://www.kyeonggi.com/news/articleView.html?idxno=2175314'},
-            {
-                'title': "'유병재 8억칫솔' 초성퀴즈 등장…정답은?",
-                'link': 'http://www.yeongnam.com/mnews/newsview.do?mode=newsView&amp;newskey=20191008.990011104361242'
-            }
-        ]
-    }
+			},
+			{
+				'title': '유병재 8억칫솔, ㅂㄹㄹㅇㅌ 초성퀴즈 정답은?',
+				'link': 'http://www.kyeonggi.com/news/articleView.html?idxno=2175314'
+			},
+			{
+				'title': "'유병재 8억칫솔' 초성퀴즈 등장…정답은?",
+				'link': 'http://www.yeongnam.com/mnews/newsview.do?mode=newsView&amp;newskey=20191008.990011104361242'
+			}
+		]
+	}
 ]
 ```
 
