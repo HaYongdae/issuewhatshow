@@ -13,14 +13,16 @@
     <%@ include file="global/resources_header.jsp" %>
 
     <!-- Custom styles for this template -->
-    <link href="/issuewhatshow/resources/css/home.css" rel="stylesheet"> 
+    <link href="resources/css/home.css" rel="stylesheet"> 
 
     <title>Home</title>
 </head>
 <body>
 	<h1>Hello, Spring MVC!</h1>
-	
-	<a href="./test">테스트 페이지로 가기</a>
+	<ul>
+		<li><a href="./test">테스트 페이지로 가기</a></li>
+		<li><a href="./3d-test">3d-force-graph 링크 길이 테스트</a></li>
+	</ul>
 	
 	<!-- footer -->
 	<%@ include file="global/footer.jsp" %>
@@ -29,8 +31,8 @@
 	<%@ include file="global/resources_body.jsp" %>
 	
 	<!-- current resources -->
-	<script type="text/javascript" src="/issuewhatshow/resources/js/util.js"></script>
-	<script type="text/javascript" src="/issuewhatshow/resources/js/home.js"></script>
+	<script type="text/javascript" src="resources/js/util.js"></script>
+	<script type="text/javascript" src="resources/js/home.js"></script>
 
 </body>
 </html>

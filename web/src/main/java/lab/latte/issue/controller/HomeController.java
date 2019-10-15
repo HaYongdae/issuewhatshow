@@ -46,4 +46,11 @@ public class HomeController {
 		return "test";
 	}
 	
+	@RequestMapping(value = "/3d-test", method = RequestMethod.GET)
+	public String test3d(Locale locale, Model model) {
+		
+		
+		return "3d-test";
+	}
+	
 }

@@ -13,7 +13,7 @@
     <%@ include file="global/resources_header.jsp" %>
 
     <!-- Custom styles for this template -->
-    <link href="/issuewhatshow/resources/css/test.css" rel="stylesheet"> 
+    <link href="resources/css/test.css" rel="stylesheet"> 
 
     <title>Test</title>
 </head>
@@ -40,8 +40,8 @@
 	<%@ include file="global/resources_body.jsp" %>
 	
 	<!-- current resources -->
-	<script type="text/javascript" src="/issuewhatshow/resources/js/util.js"></script>
-	<script type="text/javascript" src="/issuewhatshow/resources/js/test.js"></script>
+	<script type="text/javascript" src="resources/js/util.js"></script>
+	<script type="text/javascript" src="resources/js/test.js"></script>
 
 </body>
 </html>
