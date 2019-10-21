@@ -1,12 +1,10 @@
 package lab.latte.issue.dao;
 
-import java.util.List;
-
-import lab.latte.issue.model.EmployeeVO;
+import lab.latte.issue.model.TimelineVO;
 
 public interface ITimelineDAO {
 	
-	public List<EmployeeVO> getLastTimeline();
+	public TimelineVO getLastTimeline();
 //	public List<EmployeeVO> getEmployees(HashMap<String, Object> hm);
 	
 }
