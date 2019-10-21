@@ -29,27 +29,56 @@
   <script>
   	$(document).ready(function(){
   		$("#btnGetLast").click(function(){
+  			
+  			//테스트코드
   			parcel = {
 				'key' : 'test',
   				'val' : 100
   			};
   			
   			$.ajax({
-		        url: 'apis/getLastTImeline',
+		        url: 'apis/getLastTimeline',
 		        type: 'post',
 		        dataType: 'json',
 		        contentType: 'application/json',
 		        success: function(data){
-		        	console.log("success: apis/getLastTImeline")
+		        	console.log("success: apis/getLastTimeline")
 		        	console.log(data)
+		        	
+		        	vis2force(data)
 		        },
 		        error: function(equest,status,error) {
-		        	console.log("fail: apis/getLastTImeline")
+		        	console.error("fail: apis/getLastTImeline")
 		        },
 		        data: JSON.stringify(parcel)
 		    });
   		});
   	});
+  	
+  	
+  	function vis2force(data){
+  		var visdata = JSON.parse(data['visdata']);
+  		console.log(visdata);
+  		for (i in visdata) {
+  			if (i > 0) break; //테스트 라인
+  			
+  			var dmatrix = visdata[i]['dmatrix'];
+  			var dlines = dmatrix.split("\n");
+  			
+  			var mtrx = []
+
+  			for (j in dlines) {
+  				var dcols = dlines[j].split(",");
+  				mtrx[j] = dcols;
+  			}
+  			
+  			console.log(mtrx)
+  			
+  				
+  		}
+  	}
+  	
+  	
   </script>
   
   
