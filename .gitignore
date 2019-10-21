@@ -30,6 +30,7 @@ hs_err_pid*
 *.swp
 *~.nib
 local.properties
+env.properties
 .loadpath
 .recommenders
 .settings/
