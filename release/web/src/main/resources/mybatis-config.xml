@@ -7,6 +7,10 @@
 	</settings> 
 	<typeAliases> 
 		<typeAlias alias="EmployeeVO" type="lab.latte.issue.model.EmployeeVO"/>
+		<typeAlias alias="TimelineVO" type="lab.latte.issue.model.TimelineVO"/>
 	</typeAliases> 
+    <typeHandlers>
+        <typeHandler handler="lab.latte.issue.handler.CLOBHandler" javaType="String" jdbcType="LONGVARCHAR"/>
+    </typeHandlers>
 </configuration>
 
