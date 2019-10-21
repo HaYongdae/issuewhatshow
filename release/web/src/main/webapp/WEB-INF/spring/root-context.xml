@@ -23,8 +23,8 @@
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"> 
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/> 
 		<property name="url" value="jdbc:oracle:thin:@#{envProperties['db_server']}" /> 
-		<property name="username" value="hr"/> 
-		<property name="password" value="oracle"/> 
+		<property name="username" value="#{envProperties['db_username']}"/> 
+		<property name="password" value="#{envProperties['db_password']}"/> 
 	</bean>
 
 
