@@ -44,7 +44,7 @@ public class APIsController {
 		return listEmployee;
 	}
 	
-	@RequestMapping(value = "/apis/getLastTImeline", method = RequestMethod.POST)
+	@RequestMapping(value = "/apis/getLastTimeline", method = RequestMethod.POST)
 	@ResponseBody
 	public TimelineVO getLastTimeline(@RequestBody Map<String, Object> params) {
 		TimelineVO result = apiService.getLastTimeline();
