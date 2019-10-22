@@ -63,47 +63,43 @@
   	function vis2force(data){
   		console.log(data)
   		
+  		var nodesJson = [];
+  		var linkJson = [];
+  		
   		var visdata = JSON.parse(data['visdata']);
   		for (i in visdata) {
-  			if (i > 0) break; //테스트 라인
+  			//if (i > 1) break; //테스트 라인
 
   			//node 부터 처리
-  			var nodesJson = []
+  			
   			var nodes = visdata[i]['nodes'];
   			var minmax = getNodeMinMax(nodes);
   			var min = minmax['min'];
   			var max = minmax['max'];
-  			nodes.forEach(function(d, i){
+  			var nodeVals = []
+  			nodes.forEach(function(d, k){
   				val = d['val'];
+  				nodeVals.push(val);
   				min = Math.min(min, val);
   				max = Math.max(max, val)
-  				nodesJson.push({ 
-  					"id" : d['word'],
-  					"group" : d['group'],
-  					"val" : Math.max(
-						Math.min(
-							Math.sqrt(((d['val'] - min) / (max - min))*100)*4
-							, 20
-						)
-						, 2
-  					)
-  				});
+  				node = { 
+  					"id" : d['id'],
+ 	  				"word" : d['word'],
+ 	  				"group" : d['group'],
+ 	  				"val" : Math.max(
+ 						Math.min(
+ 							Math.sqrt(((d['val'] - min) / (max - min))*100)*4
+ 							, 20
+ 						)
+ 						, 2
+ 	  				)
+ 	  			}
+  				nodesJson.push(node);
+  				console.log(node);
   			});
+  			  			
   			
-  			
-  			nodesJson.forEach(function(d, i){
-  				console.log(d);
-  			});
-  			
-  			
-			drawGalaxy({ 
-				nodes: nodesJson,
-				links: [
-					{"source": "박진주", "target": "배정남", "dist" : 50}
-				]
-			});
-  			
-  			
+  			//link 처리
   			//dmatrix 는 link 부분이므로 나중에...
   			var dmatrix = visdata[i]['dmatrix'];
   			var dlines = dmatrix.split("\n");
@@ -114,7 +110,46 @@
   				var dcols = dlines[j].split(",");
   				mtrx[j] = dcols;
   			}	
+  			len = mtrx.length
+  			
+  			
+  			for (j = 1; j < len; j++){
+  				var tempLinks = []
+  				for(k = 1; k < j; k++) {
+  					dist = mtrx[j][k];
+  					if (dist > 0.7)
+  						continue;
+  					else
+  						dist = Math.pow(dist*5, 4);
+  				
+  					var forward = {
+ 						"source" : nodes[j-1]['id'], "target" : nodes[k-1]['id'], "dist" : dist
+ 	  				};
+ 	  				var reverse = {
+ 	  					"source" : nodes[k-1]['id'], "target" : nodes[j-1]['id'], "dist" : dist	
+ 	  				};
+  					
+  					if (nodeVals[j-1] < nodeVals[k-1]){
+  						tempLinks.push(forward);
+  					} else if (nodeVals[j-1] > nodeVals[k-1]){
+  						tempLinks.push(reverse)
+  					} else {
+  						tempLinks.push(forward);
+  						tempLinks.push(reverse);
+  					}
+  				}
+  				tempLinks.forEach(function(d, k){
+						console.log(d);
+						linkJson.push(d);
+				});
+  			}
+  			
   		}
+  		
+  		drawGalaxy({ 
+			nodes: nodesJson,
+			links: linkJson
+		});
   	}
   	
   	
@@ -141,19 +176,21 @@
             	new THREE.SphereGeometry(10),
             	new THREE.MeshBasicMaterial({ depthWrite: false, transparent: true, opacity: 0 })
           	);          
-			const sprite = new SpriteText(node.id);
+			const sprite = new SpriteText(node.word);
 				sprite.color = node.color;
      	    	sprite.textHeight = node.val;
      	    	obj.add(sprite);
      	    return obj;
         })      
-		.linkOpacity(0.3)		
-		.linkDirectionalParticles(3)
-        .graphData(gData);    
+		.linkOpacity(0.1)		
+		//.linkDirectionalParticles(3)
+        .graphData(gData);
+  		
+        //graph.d3Force('charge').strength(-500);
 
-	const linkForce = graph
-    	.d3Force('link')
-    	.distance(link => link.dist);
+		const linkForce = graph
+	    	.d3Force('link')
+	    	.distance(link => link.dist);
   		
   	}
   	
