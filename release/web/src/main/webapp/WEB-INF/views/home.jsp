@@ -23,6 +23,7 @@
 		<li><a href="./test">테스트 페이지로 가기</a></li>
 		<li><a href="./3d-test">3d-force-graph 링크 길이 테스트</a></li>
 		<li><a href="./1st-test">3d-force 1차 프로토타입 테스트</a></li>
+		<li><a href="./2nd-test">3d-force 2차 프로토타입 테스트</a></li>
 	</ul>
 	
 	<!-- footer -->

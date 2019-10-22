@@ -10,6 +10,11 @@
 		SELECT * FROM (SELECT * FROM latte_timeline ORDER BY yymmdd DESC, hhmm DESC)
 		WHERE rownum = 1
 	</select>
+	
+	<select id="getLastTimeline2" resultType="TimelineVO"> 
+		SELECT * FROM (SELECT * FROM latte_timeline2 ORDER BY yymmdd DESC, hhmm DESC)
+		WHERE rownum = 1
+	</select>
 
 </mapper>
 

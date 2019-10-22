@@ -18,6 +18,12 @@ public class APIService implements IAPIService {
 		return dao.getLastTimeline();
 	}
 	
+	@Override
+//	@Transactional
+	public TimelineVO getLastTimeline2() {
+		return dao.getLastTimeline2();
+	}
+	
 //	@Override
 //	public List<PstationVO> getStationsInRect(HashMap<String, Object> hm) {
 //		return dao.getStationsInRect(hm);
