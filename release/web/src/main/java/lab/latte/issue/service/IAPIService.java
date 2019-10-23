@@ -5,5 +5,4 @@ import lab.latte.issue.model.TimelineVO;
 public interface IAPIService {
 
 	public TimelineVO getLastTimeline();
-	public TimelineVO getLastTimeline2();
 }

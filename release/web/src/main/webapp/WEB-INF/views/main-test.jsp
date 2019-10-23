@@ -42,16 +42,16 @@
   			};
   			
   			$.ajax({
-		        url: 'apis/getLastTimeline2',
+		        url: 'apis/getLastTimeline',
 		        type: 'post',
 		        dataType: 'json',
 		        contentType: 'application/json',
 		        success: function(data){
-		        	console.log("success: apis/getLastTimeline2");
+		        	console.log("success: apis/getLastTimeline");
 		        	vis2force(data);
 		        },
 		        error: function(equest,status,error) {
-		        	console.error("fail: apis/getLastTImeline2");
+		        	console.error("fail: apis/getLastTImeline");
 		        },
 		        data: JSON.stringify(parcel)
 		    });
