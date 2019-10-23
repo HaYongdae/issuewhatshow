@@ -1,0 +1,8 @@
+#config.py
+
+#------------------------------------------------------------------------------
+# 오라클 linux client driver 는 아래 참조
+#   https://oracle.github.io/odpi/doc/installation.html#linux
+#------------------------------------------------------------------------------
+
+property_oracle_connection = "id/pw@xxx.xXx.XxX.xxx:1521/orcl"
