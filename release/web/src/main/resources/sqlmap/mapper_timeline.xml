@@ -10,6 +10,5 @@
 		SELECT * FROM (SELECT * FROM latte_timeline ORDER BY yymmdd DESC, hhmm DESC)
 		WHERE rownum = 1
 	</select>
-
 </mapper>
 

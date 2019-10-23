@@ -49,15 +49,13 @@ public class HomeController {
 	@RequestMapping(value = "/3d-test", method = RequestMethod.GET)
 	public String test3d(Locale locale, Model model) {
 		
-		
 		return "3d-test";
 	}
 	
-	@RequestMapping(value = "/1st-test", method = RequestMethod.GET)
-	public String jh_test(Locale locale, Model model) {
+	@RequestMapping(value = "/main-test", method = RequestMethod.GET)
+	public String mainTest(Locale locale, Model model) {
 		
-		
-		return "1st-test";
+		return "main-test";
 	}
-	
+
 }
