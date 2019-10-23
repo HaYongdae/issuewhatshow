@@ -5,4 +5,4 @@
 #   https://oracle.github.io/odpi/doc/installation.html#linux
 #------------------------------------------------------------------------------
 
-property_oracle_connection = "id/pw@xxx.xXx.XxX.xxx:1521/orcl"
+oracle_connection = "id/pw@xxx.xXx.XxX.xxx:1521/orcl"
