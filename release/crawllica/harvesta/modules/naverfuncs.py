@@ -16,7 +16,7 @@ if __name__ != '__main__':
 def get_keywords(cnt):
     naverUrl = "https://www.naver.com"
     try:
-        html = requests.get(naverUrl).content
+        html = requests.get(naverUrl, timeout=10).content
         soup = BeautifulSoup(html, 'html.parser')
         tagList = soup.select('.ah_roll_area .ah_k')
         naver_keywords = []
@@ -24,9 +24,10 @@ def get_keywords(cnt):
             naver_keywords.append(keyword.get_text())
     except Exception as e:
         print(e)
-
-    #cnt 개의 결과만을 반환
-    return naver_keywords[:min([len(naver_keywords), cnt])]
+        return naver_keywords
+    else:
+        #cnt 개의 결과만을 반환
+        return naver_keywords[:min([len(naver_keywords), cnt])]
 
 
 #--------------------------------------------------------------------------

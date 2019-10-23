@@ -21,7 +21,7 @@ if __name__ == "__main__":
         exit(1)
     path = sys.argv[1]
     path = path[:len(path)-1] if path[len(path)-1] == "/" else path
-    # path = "../../../../data/timeline/191022/1440"
+    # path = "../../data/timeline/191023/1430"
     dirlist = util.get_dirlist(path)
 
     searchWords = []

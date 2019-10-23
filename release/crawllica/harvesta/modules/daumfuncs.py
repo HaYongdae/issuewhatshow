@@ -11,15 +11,19 @@ import re
 # 실시간 인기 검색어 cnt개 반환
 #--------------------------------------------------------------------------
 def getKeywords():
-    html = requests.get("https://www.daum.net").text
-    soup=BeautifulSoup(html, 'html.parser')
-    title_list = soup.select(".list_mini .rank_cont .link_issue")
+    try:
+        html = requests.get("https://www.daum.net", timeout=10).text
+        soup=BeautifulSoup(html, 'html.parser')
+        title_list = soup.select(".list_mini .rank_cont .link_issue")
 
-    htmllist = []
-    for top in title_list:
-        htmllist.append(top.get_text())
-
-    return htmllist
+        htmllist = []
+        for top in title_list:
+            htmllist.append(top.get_text())
+    except Exception as e:
+        print(e)
+        return []
+    else:
+        return htmllist
 
 
 #--------------------------------------------------------------------------
