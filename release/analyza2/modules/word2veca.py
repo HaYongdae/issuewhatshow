@@ -23,7 +23,7 @@ def create_distance_df(docs, sigwords, length):
         sentences=sents, 
         size=300, window = 10, 
         min_count=round(30), 
-        workers=8, iter=200, 
+        workers=10, iter=200, 
         sg=1,
         hs=0,   
         negative=5,
