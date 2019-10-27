@@ -8,7 +8,7 @@
   <script type="text/javascript" src="resources/third-party-etc/popper.min.js"></script>
   <script type="text/javascript" src="resources/bootstrap/4.3.1/dist/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js"></script>
+  <!-- script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.2/bootstrap-slider.min.js"></script-->
   
   
 

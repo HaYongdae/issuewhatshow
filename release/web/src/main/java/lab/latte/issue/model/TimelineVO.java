@@ -10,25 +10,34 @@ public class TimelineVO {
 	public int getYymmdd() {
 		return yymmdd;
 	}
+	
 	public void setYymmdd(int yymmdd) {
 		this.yymmdd = yymmdd;
 	}
+	
 	public int getHhmm() {
 		return hhmm;
 	}
+	
 	public void setHhmm(int hhmm) {
 		this.hhmm = hhmm;
 	}
+	
 	public String getSearchword() {
 		return searchword;
 	}
+	
 	public void setSearchword(String searchword) {
 		this.searchword = searchword;
 	}
+	
 	public String getVisdata() {
 		return visdata;
 	}
+	
 	public void setVisdata(String visdata) {
 		this.visdata = visdata;
 	}	
+	
 }
+
