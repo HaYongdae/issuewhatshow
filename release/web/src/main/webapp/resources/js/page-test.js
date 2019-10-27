@@ -6,7 +6,7 @@ var g_graph;
 var g_linkForce;
 
 $(document).ready(function(){
-	// ÃÖ½Å Á¤º¸·Î Å°¿öµå ÀºÇÏ°è ±×¸®±â
+	// ìµœì‹  ì •ë³´ë¡œ í‚¤ì›Œë“œ ì€í•˜ê³„ ê·¸ë¦¬ê¸°
 	initGalaxy('apis/getLastTimeunit', false)
 	
 	// Button
@@ -76,14 +76,14 @@ function pagenation(toGoNum) {
 
 function parseTimeline(data){  		
 	
-	// visdata °¡Á®¿À±â
+	// visdata ê°€ì ¸ì˜¤ê¸°
 	let visdata = JSON.parse(data['visdata']);
 	console.log(visdata);
 	
-	// ³ëµå Á¤º¸ ºÒ·¯¿À±â
+	// ë…¸ë“œ ì •ë³´ ë¶ˆëŸ¬ì˜¤ê¸°
 	let nodes = visdata['nodes'];
 	
-	// µğ½ºÅÏ½º ¸ÅÆ®¸¯½º ºÒ·¯¿À°í ¸ÅÆ®¸¯½º ÇüÅÂ·Î º¯È¯ÇÏ±â
+	// ë””ìŠ¤í„´ìŠ¤ ë§¤íŠ¸ë¦­ìŠ¤ ë¶ˆëŸ¬ì˜¤ê³  ë§¤íŠ¸ë¦­ìŠ¤ í˜•íƒœë¡œ ë³€í™˜í•˜ê¸°
 	let dmatrix = visdata['dmatrix'];
 	let dlines = dmatrix.split("\n");
 	dlines.pop();
@@ -94,7 +94,7 @@ function parseTimeline(data){
 	}
 	let len = mtrx.length;
 	
-	// ³ëµå JSON ¸¸µé±â 
+	// ë…¸ë“œ JSON ë§Œë“¤ê¸° 
 	let distThreshold = getThreshold(mtrx);
 	let minmax = getNodeMinMax(nodes);
 	let min = minmax['min'];
@@ -102,7 +102,7 @@ function parseTimeline(data){
 	let nodesJson = [];
 	let nodeVals = []
 	nodes.forEach(function(d, i){
-		// ÃæºĞÈ÷ °­ÇÑ ¸µÅ©°¡ ÀÖ´Â ³ëµåµé¸¸ Ãß°¡ÇÏ±â
+		// ì¶©ë¶„íˆ ê°•í•œ ë§í¬ê°€ ìˆëŠ” ë…¸ë“œë“¤ë§Œ ì¶”ê°€í•˜ê¸°
 		let bNodeAdd = false;
 		for (j=0; j<i; j++){
 			if (mtrx[i+1][j+1] <= distThreshold){
@@ -122,7 +122,7 @@ function parseTimeline(data){
 			}
 		}
 		
-		// ¸µÅ© °Ë»ç°¡ ³¡³­ ³ëµå¸¸ Ãß°¡
+		// ë§í¬ ê²€ì‚¬ê°€ ëë‚œ ë…¸ë“œë§Œ ì¶”ê°€
 		if (bNodeAdd){
 			let val = Math.max(
 				Math.min(
@@ -145,20 +145,20 @@ function parseTimeline(data){
 	});
 	
 	
-	// ¸µÅ© JSON ¸®½ºÆ® ¸¸µé±â
+	// ë§í¬ JSON ë¦¬ìŠ¤íŠ¸ ë§Œë“¤ê¸°
 	let linkJson = [];
 	for (j = 1; j < len; j++){
 		let tempLinks = []
 		for (k = 1; k < j; k++){
 			dist = mtrx[j][k];
 			
-			// 3d-force ¼öÄ¡¿¡ ¸Â°Ô distance °ª ¼³Á¤
+			// 3d-force ìˆ˜ì¹˜ì— ë§ê²Œ distance ê°’ ì„¤ì •
 			if (dist > distThreshold)
 				continue;
 			else
 				dist = Math.pow(dist*5, 4);
 			
-			// °°Àº ±×·ìÀÌ¸é °¡±õ°Ô, ´Ù¸¥ ±×·ìÀÌ¸é ¸Ö°Ô
+			// ê°™ì€ ê·¸ë£¹ì´ë©´ ê°€ê¹ê²Œ, ë‹¤ë¥¸ ê·¸ë£¹ì´ë©´ ë©€ê²Œ
 			if (nodes[j-1]['group'] == nodes[k-1]['group'])
 				dist = dist*0.9;
 			else
@@ -179,8 +179,8 @@ function parseTimeline(data){
 				tempLinks.push(reverse);
 			}	
 			
-			// Áß¿äµµ°¡ °°Àº ³ëµå³¢¸® ´õ °¡±îÀÌ ºÙ¾î ½Ã°¢È­°¡ Á¶±İ ¿Ö°îµÇ´Â ¹®Á¦·Î »èÁ¦
-			// ¼Ò½ÇµÇ´Â ¾ç¹æÇâ¼º °ü°è Á¤º¸´Â Å©°Ô Áß¿äÇÏÁö ¾Ê¾Æ ¹ö¸².
+			// ì¤‘ìš”ë„ê°€ ê°™ì€ ë…¸ë“œë¼ë¦¬ ë” ê°€ê¹Œì´ ë¶™ì–´ ì‹œê°í™”ê°€ ì¡°ê¸ˆ ì™œê³¡ë˜ëŠ” ë¬¸ì œë¡œ ì‚­ì œ
+			// ì†Œì‹¤ë˜ëŠ” ì–‘ë°©í–¥ì„± ê´€ê³„ ì •ë³´ëŠ” í¬ê²Œ ì¤‘ìš”í•˜ì§€ ì•Šì•„ ë²„ë¦¼.
 			/*
 			} else if (nodeVals[j-1] > nodeVals[k-1]){
 				tempLinks.push(reverse);
@@ -212,8 +212,8 @@ function getNodeMinMax(nodes){
 
 
 /*-----------------------------------------------------------------------------
- * ÀûÀıÇÑ ¸µÅ© °­µµ threshold ¸¸µé±â
- * ÃÖ´ë¸µÅ© °³¼ö 2700°³·Î Á¦ÇÑ
+ * ì ì ˆí•œ ë§í¬ ê°•ë„ threshold ë§Œë“¤ê¸°
+ * ìµœëŒ€ë§í¬ ê°œìˆ˜ 2700ê°œë¡œ ì œí•œ
  */
 function getThreshold(mtrx){
 	let len = mtrx.length;
