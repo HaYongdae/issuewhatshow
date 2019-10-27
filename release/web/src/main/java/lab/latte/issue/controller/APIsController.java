@@ -1,5 +1,6 @@
 package lab.latte.issue.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -14,40 +15,69 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import lab.latte.issue.model.EmployeeVO;
 import lab.latte.issue.model.TimelineVO;
 import lab.latte.issue.service.IAPIService;
-import lab.latte.issue.service.IHrService;
 
 
 @Controller
-public class APIsController {
+public class APIsController<T, K, V> {
 	
 	@SuppressWarnings("unused")
 	private static final Logger logger = LoggerFactory.getLogger(APIsController.class);
-	
-	@Resource(name = "hrService")
-	private IHrService hrService;
-	
+
 	@Resource(name = "apiService")
-	private IAPIService apiService;
+	private IAPIService<T, K, V> apiService;
 	
 	@Resource(name="envProperties")
 	private Properties env;
 
-	@RequestMapping(value = "/apis/getEmployeesAll", method = RequestMethod.POST)
+	
+	@RequestMapping(value = "/apis/getLastTimeunit", method = RequestMethod.POST)
 	@ResponseBody
-	public List<EmployeeVO> getStations(@RequestBody Map<String, Object> params) {
-		
-		List<EmployeeVO> listEmployee = hrService.getEmployeesAll();
-		
-		return listEmployee;
+	public TimelineVO getLastTimeline() {
+		TimelineVO result = apiService.getLastTimeunit();
+		return result;	
 	}
 	
-	@RequestMapping(value = "/apis/getLastTimeline", method = RequestMethod.POST)
+	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/apis/getPastTimeline", method = RequestMethod.POST)
 	@ResponseBody
-	public TimelineVO getLastTimeline(@RequestBody Map<String, Object> params) {
-		TimelineVO result = apiService.getLastTimeline();
+	public Map<String, Object> getPastTimeline(@RequestBody Map<String, Object> params) {
+		String yymmdd = (String)params.get("yymmdd");
+		String hhmm = (String)params.get("hhmm");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("yymmddhhmm", yymmdd + hhmm);
+		map.put("ea", 5);
+				
+		List<TimelineVO> pastTimeline = 
+				(List<TimelineVO>)(apiService.getPastTimeline((Map<K, V>)map));
+		
+		List<TimelineVO> futureTimeline = 
+				(List<TimelineVO>)(apiService.getFutureTimeline((Map<K, V>)map));
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		resultMap.put("past", pastTimeline);
+		resultMap.put("future", futureTimeline);
+		
+		return resultMap;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/apis/getTimeunitByPos", method = RequestMethod.POST)
+	@ResponseBody
+	public TimelineVO getTimelineByPos(@RequestBody Map<String, Object> params) {
+		
+		int posNum = (Integer)params.get("pos");
+		
+		TimelineVO result = apiService.getTimeunitByPos(posNum);
 		return result;	
 	}
 }

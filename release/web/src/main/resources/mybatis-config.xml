@@ -6,7 +6,6 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings> 
 	<typeAliases> 
-		<typeAlias alias="EmployeeVO" type="lab.latte.issue.model.EmployeeVO"/>
 		<typeAlias alias="TimelineVO" type="lab.latte.issue.model.TimelineVO"/>
 	</typeAliases> 
     <typeHandlers>
