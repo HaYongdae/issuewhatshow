@@ -7,6 +7,7 @@ import os
 import json
 import time
 import cx_Oracle
+import itertools
 from modules import *
 
 
@@ -21,7 +22,7 @@ if __name__ == "__main__":
         exit(1)
     path = sys.argv[1]
     path = path[:len(path)-1] if path[len(path)-1] == "/" else path
-    # path = "../../data/timeline/191023/1430"
+    # path = "../../data/timeline/191028/1600"
     dirlist = util.get_dirlist(path)
 
     searchWords = []
@@ -53,10 +54,11 @@ if __name__ == "__main__":
     
     # 모든 그룹당 같은 지분으로 중요 키워드를 넣어줌
     sigwords = []
-    zipped = zip(*sigwordsList)
+    zipped = itertools.zip_longest(*sigwordsList)
     for li in zipped:
         for elem in li :
-            sigwords.append(elem)
+            if elem:
+                sigwords.append(elem)
     del(zipped)
 
     # 중복 제거
@@ -79,8 +81,8 @@ if __name__ == "__main__":
     print("한꺼번에 하기 테스트 시작")
      # 디스턴스 매트릭스 생성
     distDF = word2veca.create_distance_df(hugeDocs, sigwords, 300)
-    # # 테스트 저장
-    # distDF.to_csv("hugeVec.csv", encoding="ms949")
+    # 테스트 저장
+    distDF.to_csv(os.path.join(path, "hugeVec.csv"), encoding="ms949")
     etime = time.time() - stime
     elapsedSumm = "걸린 시간: %dm %02ds" % (etime//60, etime%60)
 
@@ -109,9 +111,9 @@ if __name__ == "__main__":
     searchword =  json.dumps(searchWords, ensure_ascii=False)
     visdata = json.dumps(visual_data, ensure_ascii=False)
     # # 테스트 저장
-    # with open(os.path.join(path, "visdata.txt"), "w", encoding="utf-8-sig") \
-    # as fp:
-    #     fp.write(visdata)
+    with open(os.path.join(path, "visdata.txt"), "w", encoding="utf-8-sig") \
+    as fp:
+        fp.write(visdata)
 
     #--------------------------------------------------------------------------
     #  Oracle Database에 Insert
