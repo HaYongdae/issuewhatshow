@@ -2,7 +2,6 @@
  * timeline-api.js
  */
 
-var g_colorMap = null;
 
 /*-----------------------------------------------------------------------------
  * 3d-force-graph 갤럭시 그리기
@@ -93,6 +92,7 @@ function parseTimeline(data){
 				"group" : d['group'],
 				"val" : val
 			}
+
 			nodesJson.push(node);
 			nodeVals.push(val);
 //			console.log(node);
@@ -218,7 +218,7 @@ function drawGalaxy(gData){
 		})
 		//.linkDirectionalParticles(3)
 		.linkOpacity(0.08)
-		.nodeVisibility( node => node.val > settings.NodeThreshold);
+		.nodeVisibility( node => node.val >= settings.NodeThreshold);
 		
 	//g_graph.d3Force('charge').strength(-500);
 
@@ -241,7 +241,9 @@ function drawGalaxy(gData){
     const ctrllr2 = gui.add(settings, 'LinkStrength', -3, 3);
     const ctrllr3 = gui.add(settings, 'Dimensions', 1, 3);
     
-    ctrllr.onChange(() => g_graph.refresh());
+    ctrllr.onChange(() => {
+    	g_graph.refresh();
+    });
     ctrllr2.onChange(() => {
     	g_graph.numDimensions(parseInt(settings.Dimensions));
     });
@@ -280,12 +282,30 @@ function getSigwordsMtrx(){
 			groupSet.add(group);
 	}
 	
+	function compare(a, b) {
+		if ( a['val'] < b['val'] ){
+			return 1;
+		}
+		if ( a['val'] > b['val'] ){
+			return -1;
+		}
+			return 0;
+	}
+	
 	let sigwordsMtrx = [];
 	let groups = groupSet.keys()
 	for(group of groups){
-		let nodesSubset = nodes.filter(node => node['group'] == group 
-				&& node['val'] >= 14.5);
-		sigwordsMtrx.push(nodesSubset);
+		let nodesSubset = nodes.filter(node => node['group'] == group );
+		nodesSubset = nodesSubset.sort(compare);
+		let nodesSubsetSubset = [];
+		let count = 0;
+		for (node of nodesSubset){
+			nodesSubsetSubset.push(node);
+			count++;
+			if (count >= 3)
+				break;
+		}
+		sigwordsMtrx.push(nodesSubsetSubset);
 	}
 	
 	return sigwordsMtrx;
@@ -295,9 +315,10 @@ function getSigwordsMtrx(){
 function setSigwordsColor(){
 	g_graph.nodeThreeObjectExtend(node => {
 		let rgb = hexToRgb(node.color);
-		$("ul.sig-ul-inner li[group='" + node.group + "']")
-			.css('background-color',  "rgba(" + rgb.r + ", " + rgb.g 
+		let domEl = $("ul.sig-ul-inner li[group='" + node.group + "']");
+		domEl.css('background-color',  "rgba(" + rgb.r + ", " + rgb.g 
 				+ ", " + rgb.b + ", 0.7)");
+		
 		return false;
 	});
 	
@@ -305,3 +326,41 @@ function setSigwordsColor(){
 		$(".sig-ul-inner li").css("visibility", "visible");
 	}, 1000);
 }
+
+
+/*-----------------------------------------------------------------------------
+ * 복잡한 3d-grapsh의 briefing 역할을 하는 계기판을 위해 중요 키워드 추출
+ */
+function focus2Node(li){
+	g_graph.nodeThreeObjectExtend(node => {
+		if(node.word == $(li).html()) {
+			let distance = 500;
+			let distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+			g_graph.cameraPosition(
+				{ 
+					x: node.x * distRatio, 
+					y: node.y * distRatio, 
+					z: node.z * distRatio 
+				}, // new position
+			    node, // lookAt ({ x, y, z })
+			    2000  // ms transition duration
+			);
+			return false;
+		}
+		else
+			return false;
+	});
+}
+
+
+function setCpDefaultIfNothere(){
+	let cp = g_graph.cameraPosition();
+	if (g_cp.x != cp.x && g_cp.y != cp.y &&	g_cp.z != cp.z){
+		g_graph.cameraPosition(
+			{x: g_cp.x,	y: g_cp.y, z: g_cp.z },
+		    {x: 0, y:0, z:0}, 
+		    1000 
+		);
+	}
+}
+

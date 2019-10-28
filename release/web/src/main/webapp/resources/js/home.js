@@ -6,6 +6,7 @@
  * global variables
  */
 var g_graph;
+var g_cp;
 var g_linkForce;
 var g_timer;
 
@@ -17,24 +18,32 @@ $(document).ready(function(){
 	let elData = sweepELData();
 	let gData = parseTimeline(elData['visdata']);
 	
-	// °¶·°½Ã ±×¸®±â
+	// ê°¤ëŸ­ì‹œ ê·¸ë¦¬ê¸°
 	drawGalaxy(gData);
 
-	// ½Ã°£¿©Çà °è±âÆÇ ±×¸®±â
+	// ì‹œê°„ì—¬í–‰ ê³„ê¸°íŒ ê·¸ë¦¬ê¸°
 	writeTimeline(elData['yymmdd'], zeroPad(elData['hhmm'], 1000));
-	// °è±âÆÇ¿¡ ¹öÆ° ±â´É ³Ö±â
+	// ê³„ê¸°íŒì— ë²„íŠ¼ ê¸°ëŠ¥ ë„£ê¸°
 	setTimeTravel(elData['yymmdd'], elData['hhmm']);
 	
-	// Áß¿ä ´Ü¾î brief ±×¸®±â
+	// ì¤‘ìš” ë‹¨ì–´ brief ê·¸ë¦¬ê¸°
 	writeSigwords();
+	// ì¤‘ìš” ë‹¨ì–´ í´ë¦­ ì´ë²¤íŠ¸ ë„£ê¸°
+	addSigClick();
+	setSigwordsColor();
+	// ì´ˆê¸° ì¹´ë©”ë¼ ìœ„ì¹˜ ì €ìž¥
+	g_cp = g_graph.cameraPosition();
 
-
+	// ìž„ì‹œ í…ŒìŠ¤íŠ¸ ì½”ë“œ
+	$('nav div h3').click(function(){
+		setCpDefaultIfNothere();
+	});
 	
 });
 
 
 /* ----------------------------------------------------------------------------
- * Controller¿¡¼­ model¿¡ ½É¾î¿Í  ELÀ» ÀÌ¿ëÇØ ÀÓ½Ã ÀúÀåÇÑ µ¥ÀÌÅÍ¸¦ Body·ÎºÎÅÍ ±Ü¾î¿À°í »èÁ¦ÇÏ´Â ÇÔ¼ö.
+ * Controllerì—ì„œ modelì— ì‹¬ì–´ì™€  ELì„ ì´ìš©í•´ ìž„ì‹œ ì €ìž¥í•œ ë°ì´í„°ë¥¼ Bodyë¡œë¶€í„° ê¸ì–´ì˜¤ê³  ì‚­ì œí•˜ëŠ” í•¨ìˆ˜.
  */
 function sweepELData(){
 	let yymmdd = $('#yymmdd').html(); 
@@ -49,8 +58,8 @@ function sweepELData(){
 
 
 /* ----------------------------------------------------------------------------
- * °ú°Å Å¸ÀÓ¶óÀÎ°ú ¹Ì·¡ Å¸ÀÓ¶óÀÎÀ» Ç¥Çö
- * ½Ã°£¿©Çà °è±âÆÇ
+ * ê³¼ê±° íƒ€ìž„ë¼ì¸ê³¼ ë¯¸ëž˜ íƒ€ìž„ë¼ì¸ì„ í‘œí˜„
+ * ì‹œê°„ì—¬í–‰ ê³„ê¸°íŒ
  */
 function writeTimeline(yymmdd, hhmm){
 	let parcel = {
@@ -67,7 +76,7 @@ function writeTimeline(yymmdd, hhmm){
         success: function(data){
 //        	console.log("success: " + 'apis/getPastTimeline');
         	
-        	// °ú°Å
+        	// ê³¼ê±°
         	let past = data.past;
         	let idx = 1;
         	for (let i = past.length-1; i >= 0; i--){
@@ -79,12 +88,12 @@ function writeTimeline(yymmdd, hhmm){
         		idx++;
         	}
         	
-        	// ÇöÀç
+        	// í˜„ìž¬
         	$('#travelDay').html(yymmddFormat(yymmdd));
         	$('#travelTime').html(hhmmFormat(hhmm));
         	$('.travel-center').addClass('brdr-cyan');
 
-        	// ¹Ì·¡
+        	// ë¯¸ëž˜
         	let future = data.future;
         	for (let i = 0; i < future.length; i++){
         		let selector = ".time-future " + ".travel-" + (i+1) + " ";
@@ -102,7 +111,7 @@ function writeTimeline(yymmdd, hhmm){
 
 
 /* ----------------------------------------------------------------------------
- * ½Ã°£¿©Çà ±â´É È°¼ºÈ­
+ * ì‹œê°„ì—¬í–‰ ê¸°ëŠ¥ í™œì„±í™”
  */
 function setTimeTravel() {
 	let arrWormHole = $(".timeline ul li span").parent();
@@ -110,7 +119,7 @@ function setTimeTravel() {
 		$('#warpDiv').css("display", "inherit");
 		g_timer = setInterval(function(){
 			let opacity = $('#warpDiv').css("opacity")
-			if (opacity >= 0.3) {
+			if (opacity >= 0.9) {
 				clearInterval(g_timer);
 			} else {
 				$('#warpDiv').css("opacity", parseFloat(opacity) + 0.005);
@@ -129,8 +138,8 @@ function setTimeTravel() {
 
 
 /* ----------------------------------------------------------------------------
- * ¿ÞÂÊ ¿µ¿ª¿¡ Áß¿ä Å°¿öµåµéÀ» ±×·ì »ö¿¡ ¸ÂÃß¾î Ç¥ÇöÇÏ±â
- * Áß¿ä Å°¿öµå ºê¸®ÇÎ ¿ªÇÒ 
+ * ì™¼ìª½ ì˜ì—­ì— ì¤‘ìš” í‚¤ì›Œë“œë“¤ì„ ê·¸ë£¹ ìƒ‰ì— ë§žì¶”ì–´ í‘œí˜„í•˜ê¸°
+ * ì¤‘ìš” í‚¤ì›Œë“œ ë¸Œë¦¬í•‘ ì—­í•  
  */
 function writeSigwords() {
 	let sigwordsMtrx = getSigwordsMtrx();
@@ -146,9 +155,16 @@ function writeSigwords() {
 		ul.appendTo(parent);
 		
 	}
-	
-	setSigwordsColor();
 }
 
+
+/* ----------------------------------------------------------------------------
+ * ì¤‘ìš” í‚¤ì›Œë“œì— í´ë¦­ ì´ë²¤íŠ¸ í• ë‹¹
+ */
+function addSigClick(){
+	 $("ul.sig-ul-inner li").each((i, li) => $(li).click(function(){
+		 focus2Node(li);
+	 }));
+}
 
 
