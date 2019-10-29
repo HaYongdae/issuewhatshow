@@ -9,7 +9,8 @@ _doDaum = True
 _doGoogle = False
 _doTwitter = True
 
-from .modules import *
+if __name__ != "__main__":
+    from .modules import *
 import urllib.request
 import json
 import time
@@ -89,7 +90,8 @@ def harvest(rootPath):
     outputRoot = os.path.join(
         rootPath,
         "%d%d%02d" % (now.year % 100, now.month, now.day), 
-        "%02d%02d" % (now.hour, now.minute // 10 * 10)
+        # "%02d%02d" % (now.hour, now.minute // 10 * 10)
+        "%02d00" % (now.hour)
     )
     # 디렉토리 존재 시 모두 삭제 후 새로 생성
     if os.path.isdir(outputRoot): shutil.rmtree(outputRoot)
@@ -128,12 +130,34 @@ def harvest(rootPath):
     #--------------------------------------------------------------------------
     # Suffix Dict.
     initialDic = {'NAVER':'N', 'DAUM':'D', 'Google':'G', 'Twitter':'T'}
-    # 로그 파일
+    # # 로그 파일
     logfp = open(os.path.join(outputRoot, "log_harvesta.txt"), "w", encoding="utf-8")
     print("저장 시작")
     #-------------------------------------
     # 일반 뉴스 저장
     #-------------------------------------
+
+    #---------------------
+    # NAVER와 DAUM을 번갈아 
+    # 다운 받도록 설정
+    # 최대한 블록 대상이
+    # 되지 않게
+    #---------------------
+    dfShuffle = pd.DataFrame(columns=colnames)
+    dfNaver = df[df.nsource == 'NAVER'][:]
+    dfDaum = df[df.nsource == 'DAUM'][:]
+    toLen = max(len(dfNaver.index), len(dfDaum.index))
+    for i in range(toLen):
+        if i < len(dfNaver.index):
+            dfShuffle.loc[len(dfShuffle.index)] = list(dfNaver.iloc[i])
+        if i < len(dfDaum.index):
+            dfShuffle.loc[len(dfShuffle.index)] = list(dfDaum.iloc[i])
+    df = dfShuffle
+    del(dfShuffle)
+
+    #---------------------
+    # 실제 다운로드
+    #---------------------
     count = len(df.index)
     for i in range(count):
         print("News: {} / {} 저장중".format(i+1, count))
@@ -163,6 +187,11 @@ def harvest(rootPath):
             print(errortext)
             logfp.write(errortext)
             logfp.flush()
+
+        # 블럭 방지를 위한 약간의 궁여책.. 좀 쉬기(1.5초)
+        # NAVER, DAUM 번갈아 다운로드 하기 때문에 싸이트별로는 3초 쉬는 효과
+        time.sleep(1.5)
+        
     #-------------------------------------
     # 트위터 저장
     #-------------------------------------
@@ -196,4 +225,13 @@ def harvest(rootPath):
     print(elapsedSumm)
 
     return outputRoot
-    
+
+
+
+
+#--------------------------------------------------------------------------
+# harvesta test code
+#--------------------------------------------------------------------------
+if __name__ == "__main__":
+    from modules import *
+    harvest("../../../data/timeline/191029/1400")
