@@ -24,6 +24,10 @@
     <div class="graph-wrap">
       <div id="3d-graph"></div>
     </div>
+    
+    <!-- 시계 -->
+    <%@ include file="global/watch.jsp" %>        
+    
     <!-- GNB -->
     <%@ include file="global/gnb.jsp" %>
     
