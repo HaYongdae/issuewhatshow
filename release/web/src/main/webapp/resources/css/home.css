@@ -140,6 +140,14 @@ body {
   
 }
 
+.sig-ul-outer {
+  margin-left: -300px;
+}
+
+.sig-ul-inner {
+  margin-left: 0px;
+}
+
 .sig-ul-inner {
   display: flex;
   padding: 4px 0 5px 5px;
@@ -158,6 +166,11 @@ body {
   color: black;
   font-weight: bold;
   font-size: 0.7em;
+  cursor: pointer;
+}
+
+#sigBtn {
+  background-color: rgba(255, 255, 255, 0.1);
   cursor: pointer;
 }
 

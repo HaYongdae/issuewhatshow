@@ -353,6 +353,9 @@ function focus2Node(li){
 }
 
 
+/*-----------------------------------------------------------------------------
+ * 카메라 위치 초기화
+ */
 function setCpDefaultIfNothere(){
 	let cp = g_graph.cameraPosition();
 	if (g_cp.x != cp.x && g_cp.y != cp.y &&	g_cp.z != cp.z){
