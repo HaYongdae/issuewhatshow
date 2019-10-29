@@ -178,7 +178,7 @@ body {
 .clockcontainer {
 	position:absolute;
 	text-align:center;
-	top:-10%;
+	top:-100px;
 	width:100%;
 	background-color:rgba( 255, 255, 255, 0.01 );
 	z-index:10;	

@@ -33,15 +33,19 @@ $(document).ready(function(){
 	setSigwordsColor();
     // 중요 단에 슬라이드 인/아웃 버튼
     addSigBtn();
-    // 모두 완료되면 중요 단어 슬라이드 아웃 시키기
+    
+    // 시계 설정
+    setClock();
+    
+    // 모두 완료되면 계기판들 슬라이드 아웃 시키기
     sigRight();
+	dropClock();
+
     
 	// 초기 카메라 위치 저장
 	g_cp = g_graph.cameraPosition();
 	
-	setWatch();
-	setTimeout(dropWatch(), 5000);
-
+	
 	// 임시 테스트 코드
 	$('nav div h3').click(function(){
 		setCpDefaultIfNothere();
@@ -223,10 +227,10 @@ function sigRight() {
 }
 
 
-/*
+/* ----------------------------------------------------------------------------
  * 시계
  */
-function setWatch(){
+function setClock(){
 	var monthNames = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ]; 
 	var dayNames= ["일", "월", "화", "수", "목", "금", "토"]	
 	var newDate = new Date();	
@@ -249,12 +253,21 @@ function setWatch(){
 	}, 1000);		
 }
 
-
-function dropWatch(){
-	setInterval(function(){
+/* ----------------------------------------------------------------------------
+ * 시계 슬라이드 다운
+ */
+g_ClockIntvlHandle = null;
+g_Clock2go = 40;
+function dropClock(){
+	g_ClockIntvlHandle = setInterval(function(){
 		let top = parseInt($(".clockcontainer").css("top"));
-		$(".clockcontainer").css("top", (top+1)+"%");
-	}, 2000);
+		if (top <= g_Clock2go){
+			$(".clockcontainer").css("top", (top+10)+"px");
+		} else {
+			$(".clockcontainer").css("top", g_Clock2go+"px");
+			clearInterval(g_ClockIntvlHandle);
+		}
+	}, 10);
 }
 
 
