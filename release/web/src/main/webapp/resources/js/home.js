@@ -38,6 +38,9 @@ $(document).ready(function(){
     
 	// 초기 카메라 위치 저장
 	g_cp = g_graph.cameraPosition();
+	
+	setWatch();
+	setTimeout(dropWatch(), 5000);
 
 	// 임시 테스트 코드
 	$('nav div h3').click(function(){
@@ -218,4 +221,40 @@ function sigRight() {
         }
     }, 10);
 }
+
+
+/*
+ * 시계
+ */
+function setWatch(){
+	var monthNames = [ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" ]; 
+	var dayNames= ["일", "월", "화", "수", "목", "금", "토"]	
+	var newDate = new Date();	
+	newDate.setDate(newDate.getDate());	    
+	$('#clockDate').html(newDate.getFullYear() + ". " + monthNames[newDate.getMonth()] + ". " + newDate.getDate() + ". (" + dayNames[newDate.getDay()] + ")");			
+	
+	setInterval( function() {			
+		var seconds = new Date().getSeconds();			
+		$("#clocksec").html(( seconds < 10 ? "0" : "" ) + seconds);
+	},1000);
+		
+	setInterval( function() {		
+		var minutes = new Date().getMinutes();			
+		$("#clockmin").html(( minutes < 10 ? "0" : "" ) + minutes);
+	},1000);
+		
+	setInterval( function() {		
+		var hours = new Date().getHours();			
+		$("#clockhours").html(( hours < 10 ? "0" : "" ) + hours);
+	}, 1000);		
+}
+
+
+function dropWatch(){
+	setInterval(function(){
+		let top = parseInt($(".clockcontainer").css("top"));
+		$(".clockcontainer").css("top", (top+1)+"%");
+	}, 2000);
+}
+
 

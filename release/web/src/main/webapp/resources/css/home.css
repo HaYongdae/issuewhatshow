@@ -178,10 +178,10 @@ body {
 .clockcontainer {
 	position:absolute;
 	text-align:center;
-	top:5%;
+	top:-10%;
 	width:100%;
 	background-color:rgba( 255, 255, 255, 0.01 );
-	z-index:10;		
+	z-index:10;	
 }
 .clockinner {
 	display: inline-block;					

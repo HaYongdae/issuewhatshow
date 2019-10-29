@@ -26,7 +26,18 @@
     </div>
     
     <!-- 시계 -->
-    <%@ include file="global/watch.jsp" %>        
+    <div class="clockcontainer">
+		<div class="clockinner">
+			<div id="clockDate">시간여행을 시작합니다.</div>
+			<ul id="clockul">
+				<li id="clockhours" class="clockli">00</li>
+			    <li id="clockpoint" class="clockli">:</li>
+			    <li id="clockmin" class="clockli">00</li>
+			    <li id="clockpoint" class="clockli">:</li>
+			    <li id="clocksec" class="clockli">00</li>
+			</ul>
+		</div>
+	</div>       
     
     <!-- GNB -->
     <%@ include file="global/gnb.jsp" %>
