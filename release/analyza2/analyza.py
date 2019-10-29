@@ -22,7 +22,7 @@ if __name__ == "__main__":
         exit(1)
     path = sys.argv[1]
     path = path[:len(path)-1] if path[len(path)-1] == "/" else path
-    # path = "../../data/timeline/191028/1600"
+    # path = "../../data/timeline/191029/1800"
     dirlist = util.get_dirlist(path)
 
     searchWords = []
@@ -130,6 +130,7 @@ if __name__ == "__main__":
     con.close()
 
     # 입력 확인 테스트 코드
+    
     con = cx_Oracle.connect(config.oracle_connection)
     cur = con.cursor()
     statement = "".join([
@@ -159,18 +160,3 @@ if __name__ == "__main__":
     # distDF = word2veca.create_distance_df(docs, sigwords, 20)
     # print(distDF)
     # #----------------------------------------
-
-
-
-    
-
-
-   
-
-
-
-
-
-    
-
-    

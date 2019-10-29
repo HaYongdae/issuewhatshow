@@ -45,8 +45,7 @@ if __name__ == "__main__":
         # # 분석 -> analyza.py 실행
         # #----------------------------
         # # outPath = "../../data/timeline/191022/2020"
-        p = subprocess.Popen(["../analyza2/analyza.py", outPath])
+        p = subprocess.Popen(["/home/lab03/latte/release/analyza2/analyza.py", outPath])
         p.wait()
         print("모든 작업 완료")
-
         
