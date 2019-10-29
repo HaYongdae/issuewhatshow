@@ -26,9 +26,10 @@ body {
 
 
 .timeline {
-  position: relative;
+  position: fixed;
+  bottom: 30px;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color:rgba( 255, 255, 255, 0.01 );
   text-align: center;
   z-index: 2;
 }
@@ -160,3 +161,56 @@ body {
   cursor: pointer;
 }
 
+/* 시계 */
+.clockcontainer {
+	position:absolute;
+	text-align:center;
+	top:5%;
+	width:100%;
+	background-color:rgba( 255, 255, 255, 0.01 );
+	z-index:10;		
+}
+.clockinner {
+	display: inline-block;					
+	height:100%;
+	width:100%;
+	color:#fff;
+}
+#clockDate {
+	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; 
+	font-size:1.2em; 
+	text-align:center;
+	text-shadow:0 0 5px #00c6ff; 
+}
+#clockul { 	
+	margin:0 auto;
+	padding:0px;
+	list-style:none;
+	text-align:center;
+}
+.clockli { 
+	display:inline;
+	font-size:3em;
+	text-align:center;
+	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	text-shadow:0 0 5px #00c6ff;
+}
+#clockpoint { 
+	position:relative;
+	-moz-animation:mymove 1s ease infinite;
+	-webkit-animation:mymove 1s ease infinite;
+	padding-left:1px;
+	padding-right:1px;
+}
+@-webkit-keyframes mymove {
+	0% {opacity:1.0; text-shadow:0 0 20px #00c6ff;}
+	50% {opacity:0; text-shadow:none; }
+	100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }	
+}
+@-moz-keyframes mymove {
+	0% {opacity:1.0; text-shadow:0 0 20px #00c6ff;}
+	50% {opacity:0; text-shadow:none; }
+	100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }	
+}
+
+	

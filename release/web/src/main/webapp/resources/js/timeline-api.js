@@ -268,7 +268,7 @@ function reDrawGalaxy(gData){
 
 
 /*-----------------------------------------------------------------------------
- * 복잡한 3d-grapsh의 briefing 역할을 하는 계기판을 위해 중요 키워드 추출
+ * 복잡한 3d-graph의 briefing 역할을 하는 계기판을 위해 중요 키워드 추출
  */
 function getSigwordsMtrx(){
 	let {nodes, links} = g_graph.graphData();
