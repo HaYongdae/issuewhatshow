@@ -25,6 +25,9 @@
       <div id="3d-graph"></div>
     </div>
     
+    <!-- 사이트로고 -->
+    <div id="spacehorseDiv"><img id="spacehorse" src="resources/images/latteishorse.png"/></div>
+    
     <!-- 시계 -->
     <div class="clockcontainer">
 		<div class="clockinner">
@@ -40,79 +43,81 @@
 	</div>       
     
     <!-- GNB -->
-    <%@ include file="global/gnb.jsp" %>
+    <!-- %@ include file="global/gnb.jsp" %-->
     
     <!-- Main Contents [START]-->
     <!-- Timeline -->
     <div class="timeline">
-      <ul class="time-past">
-        <li>
-          <div class="travel-5">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-          <div class="travel-4">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-          <div class="travel-3">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-          <div class="travel-2">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-          <div class="travel-1">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-      </ul>
-      <div class="travel-center">
-        <span id="travelDay"></span>
-        <span id="travelTime"></span>
+      <div>
+        <ul class="time-past">
+          <li>
+            <div class="travel-5">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="travel-4">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="travel-3">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="travel-2">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="travel-1">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+        </ul>
+        <div class="travel-center">
+          <span id="travelDay"></span>
+          <span id="travelTime"></span>
+        </div>
+        <ul class="time-future">
+           <li>
+            <div class="travel-1">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+             <div class="travel-2">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+             <div class="travel-3">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+             <div class="travel-4">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+          <li>
+            <div class="travel-5">
+              <span class="tr-day"></span>
+              <span  class="tr-time"></span>
+            </div>
+          </li>
+        </ul>
       </div>
-      <ul class="time-future">
-         <li>
-          <div class="travel-1">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-           <div class="travel-2">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-           <div class="travel-3">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-           <div class="travel-4">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-        <li>
-          <div class="travel-5">
-            <span class="tr-day"></span>
-            <span  class="tr-time"></span>
-          </div>
-        </li>
-      </ul>
     </div>
     <div id="sigWordsWrap">
       <table>
@@ -120,7 +125,7 @@
           <td id="sigBtn">
                                         〉
           </td>
-          <td>
+          <td class="sig-td">
             <ul class="sig-ul-outer">
               <li class="sig-li-outer">
               </li>
@@ -141,7 +146,7 @@
     </form>
       
     <!-- footer -->
-    <%@ include file="global/footer.jsp" %>
+    <!-- %@ include file="global/footer.jsp" % -->
   </div>
   
   <!-- global resources -->
