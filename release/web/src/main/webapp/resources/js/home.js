@@ -9,6 +9,7 @@ var g_graph;
 var g_cp;
 var g_linkForce;
 var g_timer;
+var g_init = true;
 
 
 /* ----------------------------------------------------------------------------
@@ -39,7 +40,7 @@ $(document).ready(function(){
     
     // 모두 완료되면 계기판들 슬라이드 아웃 시키기
     sigRight();
-	dropClock();
+	
 
     
 	// 초기 카메라 위치 저장
@@ -223,7 +224,15 @@ function sigRight() {
         } else {
             $('.sig-ul-outer').css('margin-left', (lmargin+20)+'px');
         }
+        
+        if (g_init) {
+        	g_init = false;
+        	setTimeout(function(){dropClock();}, 300);
+        	setTimeout(function(){liftWarp();}, 300);
+        }
     }, 10);
+    
+    
 }
 
 
@@ -257,12 +266,12 @@ function setClock(){
  * 시계 슬라이드 다운
  */
 g_ClockIntvlHandle = null;
-g_Clock2go = 40;
+g_Clock2go = 0;
 function dropClock(){
 	g_ClockIntvlHandle = setInterval(function(){
 		let top = parseInt($(".clockcontainer").css("top"));
 		if (top <= g_Clock2go){
-			$(".clockcontainer").css("top", (top+10)+"px");
+			$(".clockcontainer").css("top", (top+20)+"px");
 		} else {
 			$(".clockcontainer").css("top", g_Clock2go+"px");
 			clearInterval(g_ClockIntvlHandle);
@@ -270,4 +279,20 @@ function dropClock(){
 	}, 10);
 }
 
+/* ----------------------------------------------------------------------------
+ * 워프 패널 리프트 업
+ */
+g_WarpIntvlHandle = null;
+g_Warp2go = 0;
+function liftWarp(){
+	g_WarpIntvlHandle = setInterval(function(){
+		let bottom = parseInt($(".timeline").css("bottom"));
+		if (bottom <= g_Warp2go){
+			$(".timeline").css("bottom", (bottom+25)+"px");
+		} else {
+			$(".timeline").css("bottom", g_Warp2go+"px");
+			clearInterval(g_WarpIntvlHandle);
+		}
+	}, 10);
+}
 

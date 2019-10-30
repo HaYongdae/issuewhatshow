@@ -27,11 +27,16 @@ body {
 
 .timeline {
   position: fixed;
-  bottom: 30px;
+  bottom: -300px;
   width: 100%;
-  background-color:rgba(051, 102, 102, 0.1);
   text-align: center;
   z-index: 2;
+}
+
+.timeline > div {
+      background-color: rgba(051, 102, 102, 0.25);
+      padding: 3px 20px 35px 20px;
+      border-radius: 10px 10px 0px 0px;
 }
 
 .timeline ul,
@@ -43,16 +48,11 @@ body {
 
 .timeline ul {
   padding: 0;
-  width: 35%;
-}
-
-.timelien > div {
-  /*position: absolute;*/
-}
+} 
 
 .timeline li {
   padding: 0 10px 0;
-  width: 18%;
+  /* width: 18%; */
   cursor: pointer;
   border-color: rgba(255, 255, 255, 0.1);
   border-style: solid;
@@ -132,6 +132,7 @@ body {
   position: absolute;
   color: white;
   top: 18%;
+  z-index: 1;
 }
 
 #sigWordsWrap *{
@@ -144,6 +145,11 @@ body {
 
 #sigWordsWrap ul {
   
+}
+
+.sig-td {
+  background-color: rgba(051, 102, 102, 0.25);
+  border-radius: 0px 10px 10px 0px;
 }
 
 .sig-ul-outer {
@@ -167,7 +173,7 @@ body {
   visibility : collapse;
   padding: 2px 5px 2px 5px;
   margin-left: 4px;
-  border-radius: 19px;
+  border-radius: 4px;
   background-color: rgba(0, 0, 0, 0.5);
   color: black;
   font-weight: bold;
@@ -184,7 +190,7 @@ body {
 .clockcontainer {
 	position:absolute;
 	text-align:center;
-	top:-100px;
+	top:-130px;
 	width:100%;
 	background-color:rgba( 255, 255, 255, 0.01 );
 	z-index:10;	
@@ -192,8 +198,10 @@ body {
 .clockinner {
 	display: inline-block;					
 	height:100%;
-	width:100%;
 	color:#fff;
+	background-color: rgba(51, 102, 102, 0.25);
+	padding: 30px 25px 0px;
+	border-radius: 0px 0px 10px 10px;
 }
 #clockDate {
 	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; 
