@@ -29,7 +29,7 @@ body {
   position: fixed;
   bottom: 30px;
   width: 100%;
-  background-color:rgba( 255, 255, 255, 0.01 );
+  background-color:rgba(051, 102, 102, 0.1);
   text-align: center;
   z-index: 2;
 }
@@ -54,6 +54,9 @@ body {
   padding: 0 10px 0;
   width: 18%;
   cursor: pointer;
+  border-color: rgba(255, 255, 255, 0.1);
+  border-style: solid;
+  border-width: 0.5px; 
 }
 
 .timeline span {
@@ -94,15 +97,18 @@ body {
 }
 
 .brdr-cyan {
-  border-color: cyan;
+  border-color: rgba(051, 102, 102, 1);
   border-style: dotted;
   border-width: 1px;
+  background-color: rgba(051, 102, 102, 0.15);
 }
 
 .warp-target {
-  border-color: magenta;
+  border-color: rgba(255, 051, 051, 1);
+  background-color: rgba(255, 051, 051, 0.5);
   border-style: dotted;
   border-width: 1px;
+  padding: 1px 4px 1px 6px;
 }
 
 #warpDiv {
