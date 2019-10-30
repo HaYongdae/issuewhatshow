@@ -48,7 +48,7 @@
     <!-- Main Contents [START]-->
     <!-- Timeline -->
     <div class="timeline">
-      <div>
+      <div class="timelinelnner">
         <ul class="time-past">
           <li>
             <div class="travel-5">
@@ -116,9 +116,10 @@
               <span  class="tr-time"></span>
             </div>
           </li>
-        </ul>
-      </div>
-    </div>
+        </ul>    	
+    <span class="copyright">2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.</span>
+      </div>                       
+    </div>    
     <div id="sigWordsWrap">
       <table>
         <tr>

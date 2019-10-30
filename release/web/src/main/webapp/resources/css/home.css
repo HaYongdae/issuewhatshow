@@ -44,6 +44,16 @@ body {
   display: none !important; 
 }
 
+.copyright{
+	background-color:rgba(051, 102, 102, 0.8);	
+	padding:8px 0 5px 0;
+	margin:0 -20px 0 -20px;
+	font-size: 0.7em;
+	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+	border-color: rgba(051, 102, 102, 0.8);
+  	border-style: solid;
+  	border-width: 0.5px;
+}
 
 .timeline {
   position: fixed;
@@ -53,9 +63,9 @@ body {
   z-index: 2;
 }
 
-.timeline > div {
+.timelinelnner {	
       background-color: rgba(051, 102, 102, 0.25);
-      padding: 3px 20px 35px 20px;
+      padding: 3px 20px 0 20px;
       border-radius: 10px 10px 0px 0px;
 }
 
@@ -160,7 +170,7 @@ body {
 }
 
 #sigWordsWrap ul {
-  padding: 4px 3px 5px 5px;
+  padding: 4px 1px 5px 5px;
 }
 
 #sigWordsWrap ul {
@@ -220,24 +230,24 @@ body {
 	height:100%;
 	color:#fff;
 	background-color: rgba(51, 102, 102, 0.25);
-	padding: 30px 25px 0px;
+	padding: 15px 25px 0.8px 25px;
 	border-radius: 0px 0px 10px 10px;
 }
 #clockDate {
 	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif; 
-	font-size:1.2em; 
+	font-size:1.0em; 
 	text-align:center;
 	text-shadow:0 0 5px #00c6ff; 
 }
 #clockul { 	
-	margin:0 auto;
+	margin:0 0 -5px 0;
 	padding:0px;
 	list-style:none;
 	text-align:center;
 }
 .clockli { 
 	display:inline;
-	font-size:3em;
+	font-size:1.7em;
 	text-align:center;
 	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
 	text-shadow:0 0 5px #00c6ff;
