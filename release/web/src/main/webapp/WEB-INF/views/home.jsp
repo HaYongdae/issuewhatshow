@@ -136,15 +136,16 @@
     </div>
     <!-- Main Contents [END] -->
     <!-- 뉴스가 잘 들어가질까아? -->
-		<div id="newslist">
-			<div id ="newlistcontent"></div>
-
-			<div id="infonote1"></div>
-			<div id="infonote2"></div>
-			<div id="infonote3"></div>
-			<div id="infonote4"></div>
-			
-		</div>
+     <div id = "newscover">
+			<div id="newslist">
+				<div id="newlistcontent"></div>
+				<div id="infonote1"></div>
+				<div id="infonote2"></div>
+				<div id="infonote3"></div>
+				<div id="infonote4"></div>
+				<button id ="closenews">뉴스 닫기</button>
+			</div>
+	 </div>
 
 	<div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
     <div id="hhmm" class="hidden">${timeunit.hhmm }</div>

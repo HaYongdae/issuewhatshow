@@ -220,7 +220,7 @@ function drawGalaxy(gData){
 		.linkOpacity(0.08)
 		.nodeVisibility( node => node.val >= settings.NodeThreshold);
 		//오른쪽 클릭 하면 검색! 
-		g_graph.onNodeRightClick(node => searchingnode(node , gData));
+		g_graph.onNodeClick(node => searchingnode(node , gData));
 		
 	//g_graph.d3Force('charge').strength(-500);
 
@@ -269,7 +269,7 @@ function reDrawGalaxy(gData){
 	
 	g_graph.graphData(gData);
 	//오른쪽 클릭 하면 검색! 
-	g_graph.onNodeRightClick(node => searchingnode(node , gData));
+	g_graph.onNodeClick(node => searchingnode(node , gData));
 }
 
 
@@ -439,7 +439,7 @@ function searchingnode(node , gData ){
 	  				 /* $('infonote').empty();  */
 	  				try{
 	  				$("#infonote"+i).css("display" , "block")
-	  				$("#newslist").css("display" , "block")
+	  				$("#newscover").css("display" , "block")
 
 	  				document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
 	  				 + "<a href = "+ data.originallink + " id = newslinkgo >" + data.originallink[i] +"</a>";

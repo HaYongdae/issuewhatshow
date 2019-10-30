@@ -259,7 +259,10 @@ body {
 	50% {opacity:0; text-shadow:none; }
 	100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }	
 }
-
+#newscover {
+	display:none;
+	border-
+}
 #newslist {
 	
 	position : absolute;
@@ -270,7 +273,7 @@ body {
 	overflow:hidden;
 	display: inline-block;
     text-align: center;
-    display:none;
+    
     
 } 	
 #newlistcontent{
@@ -308,4 +311,12 @@ div[id *="infonote"] a {
 	text-align:left
 	
 }
+#closenews {
+	ackground-color: rgba(051, 102, 102, 0.25);
+	color:white;
+	background:rgba( 255, 255, 255, 0.01 );
+
+}
+
+
 
