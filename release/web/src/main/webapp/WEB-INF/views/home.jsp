@@ -25,6 +25,9 @@
       <div id="3d-graph"></div>
     </div>
     
+    <!-- 사이트로고 -->
+    <div id="spacehorseDiv"><img id="spacehorse" src="resources/images/latteishorse.png"/></div>
+    
     <!-- 시계 -->
     <div class="clockcontainer">
 		<div class="clockinner">

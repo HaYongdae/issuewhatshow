@@ -47,10 +47,12 @@ $(document).ready(function(){
 	g_cp = g_graph.cameraPosition();
 	
 	
-	// 임시 테스트 코드
-	$('nav div h3').click(function(){
+	// 로고 클릭시 카메라 초기화
+	$('#spacehorse').click(function(){
 		setCpDefaultIfNothere();
 	});
+	
+	
 	
 });
 

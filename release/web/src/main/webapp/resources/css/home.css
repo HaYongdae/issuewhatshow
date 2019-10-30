@@ -16,6 +16,26 @@ body {
   z-index:-1;
 }
 
+#spacehorseDiv{
+	position: fixed;
+	top: 3px;
+	left: 3px;
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 7%;
+	height: 7%;
+	z-index:10;		 
+}
+
+#spacehorse{
+	position: inline-block;
+	padding: 0 auto;
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+	cursor: pointer; 
+}
+
 .graph-wrap {
   position: absolute !important;
 }
@@ -100,7 +120,7 @@ body {
   border-color: rgba(051, 102, 102, 1);
   border-style: dotted;
   border-width: 1px;
-  background-color: rgba(051, 102, 102, 0.15);
+  background-color: rgba(051, 102, 102, 0.3);
 }
 
 .warp-target {
@@ -140,7 +160,7 @@ body {
 }
 
 #sigWordsWrap ul {
-  padding: 4px 0 5px 5px;
+  padding: 4px 3px 5px 5px;
 }
 
 #sigWordsWrap ul {
@@ -153,7 +173,7 @@ body {
 }
 
 .sig-ul-outer {
-  margin-left: -300px;
+  margin-left: -300px; 
 }
 
 .sig-ul-inner {
@@ -193,7 +213,7 @@ body {
 	top:-130px;
 	width:100%;
 	background-color:rgba( 255, 255, 255, 0.01 );
-	z-index:10;	
+	z-index:5;	
 }
 .clockinner {
 	display: inline-block;					

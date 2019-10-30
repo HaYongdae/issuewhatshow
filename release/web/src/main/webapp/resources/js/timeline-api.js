@@ -238,18 +238,20 @@ function drawGalaxy(gData){
     // 컨트롤러 장착
     const gui = new dat.GUI();
     const ctrllr = gui.add(settings, 'NodeThreshold', 0, 19.5);
-    const ctrllr2 = gui.add(settings, 'LinkStrength', -3, 3);
-    const ctrllr3 = gui.add(settings, 'Dimensions', 1, 3);
+    //const ctrllr2 = gui.add(settings, 'LinkStrength', -3, 3);
+    //const ctrllr3 = gui.add(settings, 'Dimensions', 1, 3);
     
     ctrllr.onChange(() => {
     	g_graph.refresh();
     });
+/*
     ctrllr2.onChange(() => {
     	g_graph.numDimensions(parseInt(settings.Dimensions));
     });
     ctrllr3.onChange(() => {
     	g_graph.numDimensions(parseInt(settings.Dimensions));
     });
+*/    
 }
 
 
