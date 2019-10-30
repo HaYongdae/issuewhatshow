@@ -136,8 +136,18 @@
       </table>
     </div>
     <!-- Main Contents [END] -->
-    
-    <div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
+    <!-- 뉴스가 잘 들어가질까아? -->
+		<div id="newslist">
+			<div id ="newlistcontent"></div>
+
+			<div id="infonote1"></div>
+			<div id="infonote2"></div>
+			<div id="infonote3"></div>
+			<div id="infonote4"></div>
+			
+		</div>
+
+	<div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
     <div id="hhmm" class="hidden">${timeunit.hhmm }</div>
     <div id="searchWord" class="hidden">${timeunit.searchword }</div>
     <div id="visData" class="hidden">${timeunit.visdata }</div>

@@ -270,4 +270,52 @@ body {
 	100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }	
 }
 
+#newslist {
 	
+	position : absolute;
+	top:18%;
+	right:-0%;
+	width : 300px;
+	height: 500px;
+	overflow:hidden;
+	display: inline-block;
+    text-align: center;
+    display:none;
+    
+} 	
+#newlistcontent{
+	width : 70%;
+	
+	
+	
+}
+div[id *= "infonote"] {
+ 	 background:rgba( 255, 255, 255, 0.01 );
+ 	 width: 100%;
+ 	 background-color: rgba(051, 102, 102, 0.25);
+     border-radius: 0px 10px 10px 0px;
+	 right:5%;
+	 margin : 10px;
+ 	 content : "";
+ 	 color : white;	
+ 	 
+	 padding : 10px;
+     font-size:15px;
+     display:none;
+     word-break:pre-line;
+     text-align:left
+
+     
+     
+ 	 
+}
+div[id *="infonote"] a {
+	font-size:2px;
+	text-align: left;
+	word-break:pre-line;
+	
+	
+	text-align:left
+	
+}
+
