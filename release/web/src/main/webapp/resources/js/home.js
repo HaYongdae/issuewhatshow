@@ -104,8 +104,17 @@ function writeTimeline(yymmdd, hhmm){
         	}
         	
         	// 현재
+        	/*
         	$('#travelDay').html(yymmddFormat(yymmdd));
         	$('#travelTime').html(hhmmFormat(hhmm));
+        	*/
+        	let arryymmdd = yymmddFormat(yymmdd).split(".");
+        	let arrhhmm = hhmmFormat(hhmm).split(":");
+        	$('#tYear').val(arryymmdd[0]);
+        	$('#tMonth').val(arryymmdd[1]);
+        	$('#tDay').val(arryymmdd[2]);
+        	$('#tHour').val(arrhhmm[0]);
+        	$('#tMinute').val(arrhhmm[1]);
         	$('.travel-center').addClass('brdr-cyan');
 
         	// 미래
@@ -140,7 +149,7 @@ function setTimeTravel() {
 				$('#warpDiv').css("opacity", parseFloat(opacity) + 0.005);
 			}
 		}, 10);
-		let yymmdd = $(hole).find('.tr-day').html().split("/").join("");
+		let yymmdd = $(hole).find('.tr-day').html().split(".").join("");
 		let hhmm = $(hole).find('.tr-time').html().split(":").join("");
 		
 		$(hole).addClass("warp-target");

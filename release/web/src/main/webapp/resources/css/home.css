@@ -94,6 +94,27 @@ body {
   font-weight: 100;
 }
 
+.travel-center div {
+  display: block;
+}
+
+.travel-center input {
+  text-align: center;
+  color: black;
+  font-weight: 700;
+  border: 0;
+  padding: 2px 4px;
+  background-color: gray;
+}
+
+#tYear {
+  width: 30px
+}
+
+#tMonth, #tDay, #tHour, #tMinute {
+  width: 15px;
+}
+
 .travel-5 .tr-day {
   font-size: 0.6em;
 }

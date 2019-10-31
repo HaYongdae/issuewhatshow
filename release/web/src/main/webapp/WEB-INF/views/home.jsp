@@ -89,8 +89,20 @@
           </li>
         </ul>
         <div class="travel-center">
+          <div class="t-input">
+            <input id="tYear" type="text" maxlength="4"/>
+            <input id="tMonth" type="text" maxlength="2"/>
+            <input id="tDay" type="text" maxlength="2"/>
+          </div>
+          <div class="t-input">
+            <input id="tHour" type="text" maxlength="2"/>
+            <input id="tMinute" type="text" maxlength="2"/>
+          </div>
+
+          <!-- 
           <span id="travelDay"></span>
           <span id="travelTime"></span>
+           -->
         </div>
         <ul class="time-future">
            <li>
@@ -123,7 +135,8 @@
               <span  class="tr-time"></span>
             </div>
           </li>
-        </ul>    	
+        </ul>  
+        <span><button>입력한 시점으로 출발합니다</button></span>  	
     <span class="copyright">&nbsp;&nbsp;2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.&nbsp;&nbsp;</span> 	
       </div>                       
     </div>

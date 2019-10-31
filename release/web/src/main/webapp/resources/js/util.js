@@ -46,7 +46,7 @@ function zeroPad(nr, base){
 
 
 function yymmddFormat(yymmdd){
-	return "20" + yymmdd.slice(0, 2) + "/" + yymmdd.slice(2, 4) + "/" 
+	return "20" + yymmdd.slice(0, 2) + "." + yymmdd.slice(2, 4) + "." 
 		+ yymmdd.slice(4, 6);
 }
 
