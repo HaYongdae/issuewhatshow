@@ -457,7 +457,9 @@ function searchingnode(node , gData ){
 			  				 + "<a href = "+ data.originallink + " id = newslinkgo >" + data.originallink[i] +"</a>";*/
 			  				/*document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
 			  				 + "<ul id = newslinkgo >" + data.originallink[i] +"</ul>";*/
-			  				document.getElementById('infonote' + i).innerHTML = "<a href = '" + data.originallink[i] 
+			  				document.getElementById('infonote' + i).innerHTML = "<div id = 'smalllink'> " 
+			  					+ data.clink[i] + "</div>"
+			  					+ "<a href = '" + data.originallink[i] 
 			  					+ "'  target = '_blank' >" +  data.title[i] + "</a><br>"
 			  					+ " <div>" + data.description[i] + "</div>";
 			  				
