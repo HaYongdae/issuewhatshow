@@ -9,27 +9,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="generator" content="">
-  <!-- global resources -->
-  <%@ include file="global/resources_header.jsp" %>
+  <meta name="generator" content="">  
 
   <!-- Custom styles for this template -->
-  <link href="resources/css/home.css" rel="stylesheet"> 
+  <link href="resources/css/home.css" rel="stylesheet">
   
+  <!-- global resources -->
+  <!-- %@ include file="global/resources_header.jsp" %--> 
+  
+  <!-- title -->
   <title>Home</title>
 </head>
-<body>
+
+<body>    
+  <!-- GNB -->
+  <!-- %@ include file="global/gnb.jsp" %-->
+
+  <!-- Main Contents [START]-->
   <div class="body">
-    <div id="warpDiv"><img src="resources/images/warp.gif"/></div>
-    <div class="graph-wrap">
-      <div id="3d-graph"></div>
-    </div>
+  
+  <!-- 페이지 변경시 이미지 -->
+  <div id="warpDiv"><img src="resources/images/warp.gif"/></div>
     
-    <!-- 사이트로고 -->
-    <div id="spacehorseDiv"><img id="spacehorse" src="resources/images/latteishorse.png"/></div>
-    
-    <!-- 시계 -->
-    <div class="clockcontainer">
+  <!-- 메인 3D 그래프 -->
+  <div class="graph-wrap">
+    <div id="3d-graph"></div>
+  </div>
+        
+  <!-- 사이트 로고 -->
+  <div id="spacehorseDiv"><img id="spacehorse" src="resources/images/latteishorse.png"/></div>
+       
+  <!-- 시계 -->
+  <div class="clockcontainer">
 		<div class="clockinner">
 			<div id="clockDate">시간여행을 시작합니다.</div>
 			<ul id="clockul">
@@ -40,14 +51,10 @@
 			    <li id="clocksec" class="clockli">00</li>
 			</ul>
 		</div>
-	</div>       
+	</div> 
     
-    <!-- GNB -->
-    <!-- %@ include file="global/gnb.jsp" %-->
-    
-    <!-- Main Contents [START]-->
-    <!-- Timeline -->
-    <div class="timeline">
+  <!-- Timeline 이동 -->
+  <div class="timeline">
       <div class="timelinelnner">
         <ul class="time-past">
           <li>
@@ -117,10 +124,12 @@
             </div>
           </li>
         </ul>    	
-    <span class="copyright">&nbsp;&nbsp;2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.&nbsp;&nbsp;</span>
+    <span class="copyright">&nbsp;&nbsp;2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.&nbsp;&nbsp;</span> 	
       </div>                       
-    </div>    
-    <div id="sigWordsWrap">
+    </div>
+    
+  <!-- 주요키워드 이동 -->    
+  <div id="sigWordsWrap">
       <table>
         <tr>
           <td id="sigBtn">
@@ -135,8 +144,8 @@
         </tr>
       </table>
     </div>
-    <!-- Main Contents [END] -->
-    <!-- 뉴스가 잘 들어가질까아? -->
+    
+  <!-- 뉴스가 잘 들어가질까아? -->
 		<div id="newslist">
 			<div id ="newlistcontent"></div>
 
@@ -145,19 +154,21 @@
 			<div id="infonote3"></div>
 			<div id="infonote4"></div>
 			
-		</div>
-
-	<div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
-    <div id="hhmm" class="hidden">${timeunit.hhmm }</div>
-    <div id="searchWord" class="hidden">${timeunit.searchword }</div>
-    <div id="visData" class="hidden">${timeunit.visdata }</div>
-    <form id="warp" method="post" action="/" class="hidden">
-      <input id="warpDate" name="yymmdd" value="" type="text"/>
-      <input id="warpTime" name="hhmm" value="" type="text"/>
-    </form>
+		</div>    
+  <!-- Main Contents [END] -->
+    
+  <!-- 공용 data container -->
+  <div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
+  <div id="hhmm" class="hidden">${timeunit.hhmm }</div>
+  <div id="searchWord" class="hidden">${timeunit.searchword }</div>
+  <div id="visData" class="hidden">${timeunit.visdata }</div>
+  <form id="warp" method="post" action="/" class="hidden">
+    <input id="warpDate" name="yymmdd" value="" type="text"/>
+    <input id="warpTime" name="hhmm" value="" type="text"/>
+  </form>  
       
-    <!-- footer -->
-    <!-- %@ include file="global/footer.jsp" % -->
+  <!-- footer -->
+  <!-- %@ include file="global/footer.jsp" % -->
   </div>
   
   <!-- global resources -->
