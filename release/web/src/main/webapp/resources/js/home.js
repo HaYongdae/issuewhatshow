@@ -313,3 +313,13 @@ function liftWarp(){
 $("#newslist").click(function(){
 	$("#newslist").css("display" , "none")
 })
+
+/* ----------------------------------------------------------------------------
+ * 바탕 클릭시 윈도우 리셋
+ */
+var modal = document.getElementById('infojs');
+window.onclick = function(event) {
+	if (event.target == modal) {
+    	modal.style.display = "none";
+    }
+} 
