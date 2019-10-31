@@ -291,55 +291,100 @@ body {
 	50% {opacity:0; text-shadow:none; }
 	100% {opacity:1.0; text-shadow:0 0 20px #00c6ff; }	
 }
-
-#newslist {
-	
+#newscover {
+	display:none;
 	position : absolute;
 	top:18%;
 	right:-0%;
-	width : 300px;
-	height: 500px;
+	width : 330px;
+	height: 475px;
 	overflow:hidden;
-	display: inline-block;
-    text-align: center;
-    display:none;
+	border-radius: 10px 0px 0px 10px;
+	background:rgba( 255, 255, 255, 0.2 );
+	
+  	transition: width 2s;
+	
+}
+#newslist {
+	
+
     
 } 	
 #newlistcontent{
-	width : 70%;
+	width : 75%;
+	background:rgba( 255, 255, 255, 1 );
 	
 	
 	
 }
-div[id *= "infonote"] {
+#smalllink {
+	font-size:2px;
+	color:white;
+	bottom:0px;
+	padding:0px;
+	
+}
+div[id *="infonote"] {
  	 background:rgba( 255, 255, 255, 0.01 );
- 	 width: 100%;
+ 	 width: 87%;
  	 background-color: rgba(051, 102, 102, 0.25);
      border-radius: 0px 10px 10px 0px;
 	 right:5%;
 	 margin : 10px;
- 	 content : "";
+ 	 padding:0px;
  	 color : white;	
- 	 
-	 padding : 10px;
+ 	 height:100px;
+	 
      font-size:15px;
-     display:none;
-     word-break:pre-line;
-     text-align:left
-
+     
+     
+     text-align:left;
+	 text-overflow:ellipsis; 
+	 border-radius: 3px 3px 3px 3px;
      
      
  	 
 }
 div[id *="infonote"] a {
-	font-size:2px;
+	font-size:10px;
 	text-align: left;
-	word-break:pre-line;
+	background-color: rgba(166, 206, 227, 0.7);
+	text-decoration:none;
+	border-radius: 3px 3px 3px 3px;
+	color:black;
+	text-overflow: ellipsis;
+	top:0px;
 	
 	
-	text-align:left
+
 	
 }
+.infonote div {
+	font-size : 8px;
+	
+	text-overflow:ellipsis;
+	
+}
+
+#closenews {
+	background-color: rgba(31, 120, 180, 0.7);
+	color:white;
+	border-style:hidden;
+	font-size:5px;
+	float:right;
+	
+	border-radius: 3px 3px 3px 3px;
+
+}
+
+
+
+
+
+
+
+
+
 
 button{
   background:rgba( 051, 102, 102, 0.5 );

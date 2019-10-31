@@ -157,17 +157,18 @@
         </tr>
       </table>
     </div>
-    
-  <!-- 뉴스가 잘 들어가질까아? -->
-		<div id="newslist">
-			<div id ="newlistcontent"></div>
-
-			<div id="infonote1"></div>
-			<div id="infonote2"></div>
-			<div id="infonote3"></div>
-			<div id="infonote4"></div>
-			
-		</div>
+    <!-- Main Contents [END] -->
+    <!-- 뉴스가 잘 들어가질까아? -->
+     <div id = "newscover">
+			<div id="newslist">
+				<div id="newlistcontent"></div>
+				<div class = "infonote" id="infonote0"></div>
+				<div class = "infonote" id="infonote1"></div>
+				<div class = "infonote" id="infonote2"></div>
+				<div class = "infonote" id="infonote3"></div>
+				<button id ="closenews">뉴스 닫기</button>
+			</div>
+	 </div>	
 		
   <!-- 라이센스 -->
   <div id="info" class="infototaldiv">    

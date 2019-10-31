@@ -308,7 +308,7 @@ function liftWarp(){
 }
 
 /* ----------------------------------------------------------------------------
- * 바탕 클릭시 윈도우 리셋
+ * 닫기버튼 클릭시 윈도우 리셋
  */
 $("#newslist").click(function(){
 	$("#newslist").css("display" , "none")
@@ -323,3 +323,11 @@ window.onclick = function(event) {
     	modal.style.display = "none";
     }
 } 
+
+$("#closenews").click(function(){
+	$("#newscover").css("display" , "none")
+})
+
+
+
+
