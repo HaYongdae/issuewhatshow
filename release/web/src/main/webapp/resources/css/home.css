@@ -296,9 +296,9 @@ body {
 	top:18%;
 	right:-0%;
 	width : 300px;
-	height: 500px;
+	height: 700px;
 	overflow:hidden;
-	
+	border-radius: 10px 10px 10px 10px;
 	
 }
 #newslist {
@@ -310,6 +310,12 @@ body {
 	width : 75%;
 	background:rgba( 255, 255, 255, 1 );
 	
+	
+	
+}
+#smalllink {
+	font-size:2px;
+	color:white;
 }
 div[id *="infonote"] {
  	 background:rgba( 255, 255, 255, 0.01 );
@@ -327,6 +333,7 @@ div[id *="infonote"] {
      
      text-align:left;
 	 text-overflow:ellipsis; 
+	 border-radius: 3px 3px 3px 3px;
      
      
  	 
@@ -336,7 +343,7 @@ div[id *="infonote"] a {
 	text-align: left;
 	background-color: rgba(166, 206, 227, 0.7);
 	text-decoration:none;
-	border-radius: 10px 10px 10px 10px;
+	border-radius: 3px 3px 3px 3px;
 	color:black;
 	
 
@@ -349,13 +356,17 @@ div[id *="infonote"] a {
 }
 
 #closenews {
-	ackground-color: rgba(051, 102, 102, 0.25);
+	background-color: rgba(31, 120, 180, 0.7);
 	color:white;
-	background:rgba( 255, 255, 255, 0.01 );
+	border-style:hidden;
 	font-size:5px;
 	float:right;
+	border-radius: 3px 3px 3px 3px;
 
 }
+
+
+
 
 
 

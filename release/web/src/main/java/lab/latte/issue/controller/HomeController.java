@@ -90,8 +90,9 @@ public class HomeController<T, K, V> {
 	@ResponseBody
 	public Map<String, Object> searchNaver (String[] main , String keyword , String nowTime  ,
 			Model model ) throws  Exception {
-		String clientId = "lXA5GRw7Os5t_Hs1sF28";
-        String clientSecret = "8DC2rlIJdi";
+		/*
+		 * String clientId = "lXA5GRw7Os5t_Hs1sF28"; String clientSecret = "8DC2rlIJdi";
+		 */
        
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
@@ -102,7 +103,7 @@ public class HomeController<T, K, V> {
 			
 			for(int i=0; i< 3 ;i++) {
 				
-				if(main[i] != null) {
+				if(i < main.length) {
 					apiURL += "+" + main[i];
 				}else {
 					break;
@@ -112,12 +113,16 @@ public class HomeController<T, K, V> {
 			}
     		apiURL += "&display=10&start=1&sort=sim";
     		
-		 
+		 System.out.print(apiURL);
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		Map<String,String> keyvalue = new HashMap<String, String>();
-		keyvalue.put("X-Naver-Client-Id" , clientId);
-		keyvalue.put( "X-Naver-Client-Secret", clientSecret);
+		String ID = env.getProperty("clientId");
+		String IDID = env.getProperty("clientSecret");
+		System.out.println(ID);
+		System.out.println(IDID);
+		keyvalue.put("X-Naver-Client-Id" , ID);
+		keyvalue.put( "X-Naver-Client-Secret", IDID);
 		
 		headers.setAll(keyvalue);
 		
@@ -130,14 +135,20 @@ public class HomeController<T, K, V> {
 		List originallink = new ArrayList();
 		List description = new ArrayList();
 		List title = new ArrayList();
+		List clink = new ArrayList();
 		
 		for(int i = 0 ; i <docuArray.size() ; i++) {
 			JSONObject tmp = (JSONObject)docuArray.get(i);
 			title.add((String)tmp.get("title"));
 			originallink.add((String)tmp.get("originallink"));
 			description.add((String)tmp.get("description"));
-
-
+			String cutlink = (String)tmp.get("originallink");
+			String[] cutlink2 =	cutlink.split("/");
+			System.out.println((String)tmp.get("originallink"));
+					System.out.println(cutlink2[2] + "내가 알고 싶은 값");
+			clink.add(cutlink2[2]);		
+					
+			resultMap.put("clink" , clink);
 			resultMap.put("description", description);
 			resultMap.put("title", title);
 			resultMap.put("originallink", originallink);
