@@ -261,28 +261,26 @@ body {
 }
 #newscover {
 	display:none;
-	border-
-}
-#newslist {
-	
 	position : absolute;
 	top:18%;
 	right:-0%;
 	width : 300px;
 	height: 500px;
 	overflow:hidden;
-	display: inline-block;
-    text-align: center;
-    
-    
-} 	
-#newlistcontent{
-	width : 70%;
-	
 	
 	
 }
-div[id *= "infonote"] {
+#newslist {
+	
+
+    
+} 	
+#newlistcontent{
+	width : 75%;
+	background:rgba( 255, 255, 255, 1 );
+	
+}
+div[id *="infonote"] {
  	 background:rgba( 255, 255, 255, 0.01 );
  	 width: 100%;
  	 background-color: rgba(051, 102, 102, 0.25);
@@ -291,32 +289,41 @@ div[id *= "infonote"] {
 	 margin : 10px;
  	 content : "";
  	 color : white;	
- 	 
+ 	 height:100px;
 	 padding : 10px;
      font-size:15px;
-     display:none;
-     word-break:pre-line;
-     text-align:left
-
+     
+     
+     text-align:left;
+	 text-overflow:ellipsis; 
      
      
  	 
 }
 div[id *="infonote"] a {
-	font-size:2px;
+	font-size:10px;
 	text-align: left;
-	word-break:pre-line;
 	
-	
-	text-align:left
+
 	
 }
+.infonote div {
+	font-size : 8px;
+	
+	
+}
+
 #closenews {
 	ackground-color: rgba(051, 102, 102, 0.25);
 	color:white;
 	background:rgba( 255, 255, 255, 0.01 );
+	font-size:5px;
 
 }
+
+
+
+
 
 
 

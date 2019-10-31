@@ -89,18 +89,29 @@ public class HomeController<T, K, V> {
 	@RequestMapping(value = "api/searching" , method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Map<String, Object> searchNaver (String[] main , String keyword , String nowTime  ,
-			Model model ) throws  IOException {
+			Model model ) throws  Exception {
 		String clientId = "lXA5GRw7Os5t_Hs1sF28";
         String clientSecret = "8DC2rlIJdi";
-        
+       
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
 		try {
-		String apiURL = "https://openapi.naver.com/v1/search/news.json?query="
-    			+ main[0] + "+"
-    			+ main[1] + "+"
-    			+ main[2]
-    			+ "&display=10&start=1&sort=sim";
+			
+			String apiURL = "https://openapi.naver.com/v1/search/news.json?query=" + keyword ;
+			
+			for(int i=0; i< 3 ;i++) {
+				
+				if(main[i] != null) {
+					apiURL += "+" + main[i];
+				}else {
+					break;
+				}
+				
+				
+			}
+    		apiURL += "&display=10&start=1&sort=sim";
+    		
+		 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		Map<String,String> keyvalue = new HashMap<String, String>();

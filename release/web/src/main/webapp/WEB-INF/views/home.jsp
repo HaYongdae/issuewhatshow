@@ -139,14 +139,14 @@
      <div id = "newscover">
 			<div id="newslist">
 				<div id="newlistcontent"></div>
-				<div id="infonote1"></div>
-				<div id="infonote2"></div>
-				<div id="infonote3"></div>
-				<div id="infonote4"></div>
+				<div class = "infonote" id="infonote0"></div>
+				<div class = "infonote" id="infonote1"></div>
+				<div class = "infonote" id="infonote2"></div>
+				<div class = "infonote" id="infonote3"></div>
 				<button id ="closenews">뉴스 닫기</button>
 			</div>
 	 </div>
-
+	
 	<div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
     <div id="hhmm" class="hidden">${timeunit.hhmm }</div>
     <div id="searchWord" class="hidden">${timeunit.searchword }</div>
