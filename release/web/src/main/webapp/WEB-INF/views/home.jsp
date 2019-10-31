@@ -165,12 +165,12 @@
 		<div class = "infonote" id="infonote1"></div>
 		<div class = "infonote" id="infonote2"></div>
 		<div class = "infonote" id="infonote3"></div>
-		<button id ="closenews">뉴스 닫기</button>
+		<button id ="closenews" onclick="document.getElementById('newscover').style.display='none'">뉴스 닫기</button>
 	</div>
   </div>	
 		
   <!-- 라이센스 -->
-  <div id="info" class="infototaldiv">    
+  <div id='infojs' class="infototaldiv">    
     <div class="infoinnerpage">       
     <button onclick="document.getElementById('infojs').style.display='none'" id="xbutton">&times;</button>
 	  <div id="infoneyong">          
