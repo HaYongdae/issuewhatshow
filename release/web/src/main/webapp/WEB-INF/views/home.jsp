@@ -136,7 +136,7 @@
             </div>
           </li>
         </ul>  
-        <span><button>입력한 시점으로 출발합니다</button></span>  	
+        <span><button id="btnCustomWarp">입력한 시점으로 출발합니다</button></span>  	
     <span class="copyright">&nbsp;&nbsp;2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.&nbsp;&nbsp;</span> 	
       </div>                       
     </div>

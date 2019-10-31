@@ -16,9 +16,45 @@
     <select id="getTimeunitByTime" resultType="TimelineVO" parameterType="hashmap"> 
       SELECT * FROM latte_timeline WHERE yymmdd = #{yymmdd} and hhmm = #{hhmm}
     </select>
+ 
+ 
+ 
+    <select id="isExistTimeunit" resultType="int" parameterType="hashmap">
+      SELECT count(yymmdd) FROM latte_timeline WHERE yymmdd = #{yymmdd} and hhmm = #{hhmm}
+    </select>
     
     
     
+    <select id="getAroundTimeunit" resultType="TimelineVO" parameterType="hashmap">
+      SELECT 
+          yymmdd, hhmm
+      FROM (
+          SELECT 
+              yymmdd, hhmm, 
+              ABS (
+                  TO_NUMBER(CONCAT(TO_CHAR(yymmdd), LPAD(hhmm, 4, '0')))
+                  - 
+                  TO_NUMBER(TO_CHAR(TO_DATE(#{yymmddhhmm}, 'yyMMddHH24MI'), 'yyMMddHH24MI'))
+              )  as diff
+          FROM 
+              latte_timeline
+          WHERE 
+              (CONCAT(TO_CHAR(yymmdd), LPAD(hhmm, 4, '0')))
+              <![CDATA[>]]> 
+              TO_CHAR(TO_DATE(#{yymmddhhmm}, 'yyMMddHH24MI') - 1, 'yyMMddHH24MI')
+              AND
+              (CONCAT(TO_CHAR(yymmdd), LPAD(hhmm, 4, '0'))) 
+              <![CDATA[<]]>
+              TO_CHAR(TO_DATE(#{yymmddhhmm}, 'yyMMddHH24MI') + 1, 'yyMMddHH24MI')
+          ORDER BY
+              diff
+      )
+      WHERE
+          rownum = 1
+    </select>
+
+
+
     <select id="getPastTimeline" resultType="TimelineVO" parameterType="hashmap">
       SELECT 
           yymmdd, hhmm

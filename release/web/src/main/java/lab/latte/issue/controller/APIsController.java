@@ -65,6 +65,42 @@ public class APIsController<T, K, V> {
 	}
 	
 	
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/apis/getAround", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getAround(@RequestBody Map<String, Object> params) {
+		String yymmdd = (String)params.get("yymmdd");
+		String hhmm = (String)params.get("hhmm");
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("yymmdd", yymmdd);
+		map.put("hhmm", hhmm);
+		
+		int cnt = apiService.isExistTimeunit((Map<K, V>)map);
+		boolean isExist = cnt > 0 ? true : false;
+		
+		Map<String, Object> resultMap = new HashMap<String, Object>();
+		if (cnt > 0) {
+			resultMap.put("direction", 0);
+			resultMap.put("yymmdd", yymmdd);
+			resultMap.put("hhmm", hhmm);
+		} else {
+			map.put("yymmddhhmm", yymmdd + hhmm);
+			List<TimelineVO> tList = 
+					(List<TimelineVO>)apiService.getAroundTimeunit((Map<K, V>)map);
+			
+			if (tList.size() > 0) {
+				resultMap.put("direction", 1);
+				resultMap.put("yymmdd", tList.get(0).getYymmdd());
+				resultMap.put("hhmm", tList.get(0).getHhmm());
+				
+			} else {
+				resultMap.put("direction", -1);
+			}		
+		}
+		
+		return resultMap;	
+	}
 	
 	
 	

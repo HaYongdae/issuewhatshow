@@ -26,6 +26,8 @@ $(document).ready(function(){
 	writeTimeline(elData['yymmdd'], zeroPad(elData['hhmm'], 1000));
 	// 계기판에 버튼 기능 넣기
 	setTimeTravel(elData['yymmdd'], elData['hhmm']);
+	// 사용자 지정 워프 기능 넣기
+	setCustomWarp();
 	
 	// 중요 단어 brief 그리기
 	writeSigwords();
@@ -140,15 +142,7 @@ function writeTimeline(yymmdd, hhmm){
 function setTimeTravel() {
 	let arrWormHole = $(".timeline ul li span").parent();
 	arrWormHole.each((i, hole) => $(hole).click(function(){
-		$('#warpDiv').css("display", "inherit");
-		g_timer = setInterval(function(){
-			let opacity = $('#warpDiv').css("opacity")
-			if (opacity >= 0.9) {
-				clearInterval(g_timer);
-			} else {
-				$('#warpDiv').css("opacity", parseFloat(opacity) + 0.005);
-			}
-		}, 10);
+		displayWarp();
 		let yymmdd = $(hole).find('.tr-day').html().split(".").join("");
 		let hhmm = $(hole).find('.tr-time').html().split(":").join("");
 		
@@ -158,6 +152,48 @@ function setTimeTravel() {
 		$('#warpTime').val(hhmm);
 		setTimeout(function(){$('#warp').submit();}, 2000);	
 	}));
+}
+
+
+function setCustomWarp(){
+	$('#btnCustomWarp').click(function(){
+		let yymmdd = 
+			zeroPad($('#tYear').val().substr(2), 1000) + 
+			zeroPad($('#tMonth').val(), 10) + 
+			zeroPad($('#tDay').val(), 10);
+		let hhmm = 
+			zeroPad($('#tHour').val(), 10) + 
+			zeroPad($('#tMinute').val(), 10)
+		
+		let parcel = {
+			'yymmdd' : yymmdd,
+			'hhmm' : hhmm
+		};
+		
+		$.ajax({
+	        url: 'apis/getAround',
+	        type: 'post',
+	        dataType: 'json',
+	        data: JSON.stringify(parcel),
+	        contentType: 'application/json',
+	        success: function(data){
+	        	if (data.direction >= 0 ) {
+	        		if (data.direction == 1)
+	        			alert("요청한 시각과 가장 가까운 유효시점으로 이동합니다.")
+	        		displayWarp();
+	        		$('#warpDate').val(data.yymmdd);
+	        		$('#warpTime').val(data.hhmm);
+	        		setTimeout(function(){$('#warp').submit();}, 2000);	
+	        	} else {
+	        		alert("요청한 시각 부근에는 유효한 데이터가 존재하지 않습니다.")
+	        	}
+	        },
+	        error: function(equest,status,error) {
+	        	console.error("fail: " + 'apis/getPastTimeline');
+	        }
+	    });
+		
+	});
 }
 
 
@@ -303,6 +339,22 @@ function liftWarp(){
 		} else {
 			$(".timeline").css("bottom", g_Warp2go+"px");
 			clearInterval(g_WarpIntvlHandle);
+		}
+	}, 10);
+}
+
+
+/* ----------------------------------------------------------------------------
+ * 워프 gif 활성화
+ */
+function displayWarp(){
+	$('#warpDiv').css("display", "inherit");
+	g_timer = setInterval(function(){
+		let opacity = $('#warpDiv').css("opacity")
+		if (opacity >= 0.9) {
+			clearInterval(g_timer);
+		} else {
+			$('#warpDiv').css("opacity", parseFloat(opacity) + 0.005);
 		}
 	}, 10);
 }
