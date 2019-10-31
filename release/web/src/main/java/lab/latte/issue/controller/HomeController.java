@@ -89,47 +89,60 @@ public class HomeController<T, K, V> {
 	@RequestMapping(value = "api/searching" , method = {RequestMethod.GET, RequestMethod.POST})
 	@ResponseBody
 	public Map<String, Object> searchNaver (String[] main , String keyword , String nowTime  ,
-			Model model ) throws  IOException {
+			Model model ) throws  Exception {
 		String clientId = "lXA5GRw7Os5t_Hs1sF28";
         String clientSecret = "8DC2rlIJdi";
-        
+       
         Map<String, Object> resultMap = new HashMap<String, Object>();
 
 		try {
-			String apiURL = "https://openapi.naver.com/v1/search/news.json?query="
-	    			+ main[0] + "+"
-	    			+ main[1] + "+"
-	    			+ main[2]
-	    			+ "&display=10&start=1&sort=sim";
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			Map<String,String> keyvalue = new HashMap<String, String>();
-			keyvalue.put("X-Naver-Client-Id" , clientId);
-			keyvalue.put( "X-Naver-Client-Secret", clientSecret);
+
 			
-			headers.setAll(keyvalue);
+			String apiURL = "https://openapi.naver.com/v1/search/news.json?query=" + keyword ;
 			
-			HttpEntity entity = new HttpEntity("parameters" , headers);
-			ResponseEntity response = restTemplate.exchange(apiURL,  HttpMethod.GET , entity , String.class);
-			
-			JSONParser jsonParser = new JSONParser();
-			JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody().toString());
-			JSONArray docuArray = (JSONArray)jsonObject.get("items");
-			List originallink = new ArrayList();
-			List description = new ArrayList();
-			List title = new ArrayList();
-			
-			for(int i = 0 ; i <docuArray.size() ; i++) {
-				JSONObject tmp = (JSONObject)docuArray.get(i);
-				title.add((String)tmp.get("title"));
-				originallink.add((String)tmp.get("originallink"));
-				description.add((String)tmp.get("description"));
+			for(int i=0; i< 3 ;i++) {
+				
+				if(main[i] != null) {
+					apiURL += "+" + main[i];
+				}else {
+					break;
+				}
+				
 				
 			}
+    		apiURL += "&display=10&start=1&sort=sim";
+    		
+		 
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		Map<String,String> keyvalue = new HashMap<String, String>();
+		keyvalue.put("X-Naver-Client-Id" , clientId);
+		keyvalue.put( "X-Naver-Client-Secret", clientSecret);
+		
+		headers.setAll(keyvalue);
+		
+		HttpEntity entity = new HttpEntity("parameters" , headers);
+		ResponseEntity response = restTemplate.exchange(apiURL,  HttpMethod.GET , entity , String.class);
+		
+		JSONParser jsonParser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody().toString());
+		JSONArray docuArray = (JSONArray)jsonObject.get("items");
+		List originallink = new ArrayList();
+		List description = new ArrayList();
+		List title = new ArrayList();
+		
+		for(int i = 0 ; i <docuArray.size() ; i++) {
+			JSONObject tmp = (JSONObject)docuArray.get(i);
+			title.add((String)tmp.get("title"));
+			originallink.add((String)tmp.get("originallink"));
+			description.add((String)tmp.get("description"));
+
 
 			resultMap.put("description", description);
 			resultMap.put("title", title);
 			resultMap.put("originallink", originallink);
+			
+		}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

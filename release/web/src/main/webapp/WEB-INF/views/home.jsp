@@ -157,28 +157,28 @@
         </tr>
       </table>
     </div>
-    
-  <!-- 뉴스가 잘 들어가질까아? -->
-		<div id="newslist">
-			<div id ="newlistcontent"></div>
+    <!-- Main Contents [END] -->
+    <!-- 뉴스가 잘 들어가질까아? -->
+     <div id = "newscover">
+			<div id="newslist">
+				<div id="newlistcontent"></div>
+				<div class = "infonote" id="infonote0"></div>
+				<div class = "infonote" id="infonote1"></div>
+				<div class = "infonote" id="infonote2"></div>
+				<div class = "infonote" id="infonote3"></div>
+				<button id ="closenews">뉴스 닫기</button>
+			</div>
+	 </div>
+	
+	<div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
+    <div id="hhmm" class="hidden">${timeunit.hhmm }</div>
+    <div id="searchWord" class="hidden">${timeunit.searchword }</div>
+    <div id="visData" class="hidden">${timeunit.visdata }</div>
+    <form id="warp" method="post" action="/" class="hidden">
+      <input id="warpDate" name="yymmdd" value="" type="text"/>
+      <input id="warpTime" name="hhmm" value="" type="text"/>
+    </form>
 
-			<div id="infonote1"></div>
-			<div id="infonote2"></div>
-			<div id="infonote3"></div>
-			<div id="infonote4"></div>
-			
-		</div>    
-  <!-- Main Contents [END] -->
-    
-  <!-- 공용 data container -->
-  <div id="yymmdd" class="hidden">${timeunit.yymmdd }</div>
-  <div id="hhmm" class="hidden">${timeunit.hhmm }</div>
-  <div id="searchWord" class="hidden">${timeunit.searchword }</div>
-  <div id="visData" class="hidden">${timeunit.visdata }</div>
-  <form id="warp" method="post" action="/" class="hidden">
-    <input id="warpDate" name="yymmdd" value="" type="text"/>
-    <input id="warpTime" name="hhmm" value="" type="text"/>
-  </form>  
       
   <!-- footer -->
   <!-- %@ include file="global/footer.jsp" % -->

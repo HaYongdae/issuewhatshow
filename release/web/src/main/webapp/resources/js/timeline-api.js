@@ -220,7 +220,7 @@ function drawGalaxy(gData){
 		.linkOpacity(0.08)
 		.nodeVisibility( node => node.val >= settings.NodeThreshold);
 		//오른쪽 클릭 하면 검색! 
-		g_graph.onNodeRightClick(node => searchingnode(node , gData));
+		g_graph.onNodeClick(node => searchingnode(node , gData));
 		
 	//g_graph.d3Force('charge').strength(-500);
 
@@ -269,7 +269,7 @@ function reDrawGalaxy(gData){
 	
 	g_graph.graphData(gData);
 	//오른쪽 클릭 하면 검색! 
-	g_graph.onNodeRightClick(node => searchingnode(node , gData));
+	g_graph.onNodeClick(node => searchingnode(node , gData));
 }
 
 
@@ -404,16 +404,23 @@ function searchingnode(node , gData ){
 	  		}
 	  	}
 	  	//저장리스트에서 검색 할 것 만 뺴오자.
+	  	console.log(distlist)
 	  	var searchnode = [];
 	  	 for(var i = 0 ; i <4 ; i++){
+	  		 try{
 	  		if(distlist[i].source['word'] != node['word']){
 	  			searchnode.push(distlist[i].source['word'])
+	  			console.log(distlist[i].source['word'])
 	  			 
 	  		}else{
 	  			searchnode.push(distlist[i].target['word'])
+	  			console.log(distlist[i].target['word'])
 	  		}
+	  		 }catch(e){
+	  			 console.log(e)
+	  		 }
 	  	} 
-	  	 
+	  	 console.log(distlist)
 	  	 
 	  	 //검색 내용을 넘겨보까? 네이버 api이용 위해서
 	  	$.ajax({
@@ -429,30 +436,40 @@ function searchingnode(node , gData ){
 	  		},
 	  		success : function searchresult(data){
 	  			console.log("success searching");
-	  			console.log(data);
-	  			console.log(data.originallink[5]);
-	  			console.log(data.title[0]);
-
+	  			console.log(data)
 	  			
-	  			  for(var i=0 ; i < data.title.length ;i++){
-	  				  console.log(data.title.length)
-	  				 /* $('infonote').empty();  */
-	  				try{
-	  				$("#infonote"+i).css("display" , "block")
-	  				$("#newslist").css("display" , "block")
-
-	  				document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
-	  				 + "<a href = "+ data.originallink + " id = newslinkgo >" + data.originallink[i] +"</a>";
-	  				/*document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
-	  				 + "<ul id = newslinkgo >" + data.originallink[i] +"</ul>";*/
-	  				
-	  				
+	  			
+	  			
+	  			
+	  			try{
+			  			if( !Object.keys(data).length ){
+			  				alert("뉴스를 찾을 수 없습니다.")
+			  			}else{
+			  				$("#newscover").css("display" , "block")
+			  			  for(var i=0 ; i < 4 ;i++){
+			  				  
+			  				 /* $('infonote').empty();  */
+			  				
+			  				/*$("#infonote"+i).css("display" , "block")*/
+			  				
+			
+			  				/*document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
+			  				 + "<a href = "+ data.originallink + " id = newslinkgo >" + data.originallink[i] +"</a>";*/
+			  				/*document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
+			  				 + "<ul id = newslinkgo >" + data.originallink[i] +"</ul>";*/
+			  				document.getElementById('infonote' + i).innerHTML = "<a href = '" + data.originallink[i] 
+			  					+ "'  target = '_blank' >" +  data.title[i] + "</a><br>"
+			  					+ " <div>" + data.description[i] + "</div>";
+			  				
+			  			  
+			  				}
+			  			}
 	  				
 	  				
 	  				}catch(e){
 	  				 console.log(e)
-	  				}
-	  			} 
+	  				
+	  				} 
 	  
 	  		},
 	  			error : function searchresult(request , status , error){
