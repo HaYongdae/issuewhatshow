@@ -98,7 +98,6 @@
             <input id="tHour" type="text" maxlength="2"/>
             <input id="tMinute" type="text" maxlength="2"/>
           </div>
-
           <!-- 
           <span id="travelDay"></span>
           <span id="travelTime"></span>
@@ -136,8 +135,8 @@
             </div>
           </li>
         </ul>  
-        <span><button id="btnCustomWarp">입력한 시점으로 출발합니다</button></span>  	
-    <span class="copyright" onclick="document.getElementById('info').style.display='block'">&nbsp;&nbsp;2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.&nbsp;&nbsp;</span> 	
+      <span><button id="btnCustomWarp">입력한 시점으로 출발합니다</button></span>  	
+      <span class="copyright" onclick="document.getElementById('infojs').style.display='block'">&nbsp;&nbsp;2019_Training for 4th Industrial Revolution_Open API를 활용한 빅데이터 전처리・시각화_B반.&nbsp;&nbsp;&nbsp;&nbsp;Team_Latte is Horse.&nbsp;&nbsp;Project_IssueWhatShow.&nbsp;&nbsp;</span> 	
       </div>                       
     </div>
     
@@ -157,23 +156,23 @@
         </tr>
       </table>
     </div>
-    <!-- Main Contents [END] -->
-    <!-- 뉴스가 잘 들어가질까아? -->
-     <div id = "newscover">
-			<div id="newslist">
-				<div id="newlistcontent"></div>
-				<div class = "infonote" id="infonote0"></div>
-				<div class = "infonote" id="infonote1"></div>
-				<div class = "infonote" id="infonote2"></div>
-				<div class = "infonote" id="infonote3"></div>
-				<button id ="closenews">뉴스 닫기</button>
-			</div>
-	 </div>	
+
+  <!-- 뉴스가 잘 들어가질까아? -->
+  <div id = "newscover">
+	<div id="newslist">
+		<div id="newlistcontent"></div>
+		<div class = "infonote" id="infonote0"></div>
+		<div class = "infonote" id="infonote1"></div>
+		<div class = "infonote" id="infonote2"></div>
+		<div class = "infonote" id="infonote3"></div>
+		<button id ="closenews">뉴스 닫기</button>
+	</div>
+  </div>	
 		
   <!-- 라이센스 -->
   <div id="info" class="infototaldiv">    
     <div class="infoinnerpage">       
-    <button onclick="document.getElementById('info').style.display='none'" id="xbutton">&times;</button>
+    <button onclick="document.getElementById('infojs').style.display='none'" id="xbutton">&times;</button>
 	  <div id="infoneyong">          
 	    <h3>라이센스</h3>
        	<p>&nbsp;</p>
@@ -191,7 +190,7 @@
        	<p>&nbsp;</p>
        	<p>&nbsp;</p>
        </div>
-  	<button onclick="document.getElementById('info').style.display='none'" id="closebutton">Close</button>
+  	<button onclick="document.getElementById('infojs').style.display='none'" id="closebutton">Close</button>
     </div>    
   </div>		    
   <!-- Main Contents [END] -->

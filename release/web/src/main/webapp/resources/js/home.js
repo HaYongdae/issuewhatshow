@@ -360,26 +360,18 @@ function displayWarp(){
 }
 
 /* ----------------------------------------------------------------------------
- * 닫기버튼 클릭시 윈도우 리셋
- */
-$("#newslist").click(function(){
-	$("#newslist").css("display" , "none")
-})
-
-/* ----------------------------------------------------------------------------
- * 바탕 클릭시 윈도우 리셋
+ * 라이센스 기능 활성화
  */
 var modal = document.getElementById('infojs');
 window.onclick = function(event) {
 	if (event.target == modal) {
     	modal.style.display = "none";
     }
-} 
+}
 
+/* ----------------------------------------------------------------------------
+ * 뉴스 닫기 기능
+ */
 $("#closenews").click(function(){
 	$("#newscover").css("display" , "none")
 })
-
-
-
-
