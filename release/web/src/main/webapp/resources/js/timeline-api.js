@@ -461,7 +461,7 @@ function searchingnode(node , gData ){
 			  					+ data.clink[i] + "</div>"
 			  					+ "<a href = '" + data.originallink[i] 
 			  					+ "'  target = '_blank' >" +  data.title[i] + "</a><br>"
-			  					+ " <div>" + data.description[i] + "</div>";
+			  					+ " <div>" + data.cdes[i] + "</div>";
 			  				
 			  			  
 			  				}

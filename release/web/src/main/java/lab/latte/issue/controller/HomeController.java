@@ -113,7 +113,7 @@ public class HomeController<T, K, V> {
 			}
     		apiURL += "&display=10&start=1&sort=sim";
     		
-		 System.out.print(apiURL);
+		 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		Map<String,String> keyvalue = new HashMap<String, String>();
@@ -136,6 +136,7 @@ public class HomeController<T, K, V> {
 		List description = new ArrayList();
 		List title = new ArrayList();
 		List clink = new ArrayList();
+		List cdes = new ArrayList();
 		
 		for(int i = 0 ; i <docuArray.size() ; i++) {
 			JSONObject tmp = (JSONObject)docuArray.get(i);
@@ -145,15 +146,25 @@ public class HomeController<T, K, V> {
 			String cutlink = (String)tmp.get("originallink");
 			String[] cutlink2 =	cutlink.split("/");
 			System.out.println((String)tmp.get("originallink"));
-					System.out.println(cutlink2[2] + "내가 알고 싶은 값");
-			clink.add(cutlink2[2]);		
-					
+			String cutdes = (String)tmp.get("description");
+			if(cutdes.length()>100) {
+			String cutdes2 = cutdes.substring(0,100) + "...";
+				cdes.add(cutdes2);
+			}else {
+			String cutdes2 = cutdes + "...";
+				cdes.add(cutdes2);
+				
+			}
+			clink.add(cutlink2[2]);
+			
+		}
+			resultMap.put("cdes" , cdes);		
 			resultMap.put("clink" , clink);
 			resultMap.put("description", description);
 			resultMap.put("title", title);
 			resultMap.put("originallink", originallink);
 			
-		}
+		
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
