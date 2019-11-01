@@ -209,6 +209,10 @@ ul.time-future {
   z-index: 1;
 }
 
+#sigWordsWrap table {
+  border-spacing: 0px;
+}
+
 #sigWordsWrap *{
   list-style-type:none;
 }
