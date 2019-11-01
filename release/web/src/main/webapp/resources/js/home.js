@@ -102,6 +102,7 @@ function writeTimeline(yymmdd, hhmm){
         		let timeSelector = selector + ".tr-time";
         		$(dateSelector).html(yymmddFormat(""+past[i].yymmdd));
         		$(timeSelector).html(hhmmFormat(""+past[i].hhmm));
+        		$(dateSelector).parent().parent().css("border-color", "rgba(255, 255, 255, 0.1)");		
         		idx++;
         	}
         	
@@ -127,6 +128,7 @@ function writeTimeline(yymmdd, hhmm){
         		let timeSelector = selector + ".tr-time";
         		$(dateSelector).html(yymmddFormat(""+future[i].yymmdd));
         		$(timeSelector).html(hhmmFormat(""+future[i].hhmm));
+        		$(dateSelector).parent().parent().css("border-color", "rgba(255, 255, 255, 0.1)");
         	}
         },
         error: function(equest,status,error) {

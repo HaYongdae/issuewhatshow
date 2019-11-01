@@ -48,15 +48,15 @@ body {
 
 /* 라이센스 */
 .copyright{
-    background-color:rgba(051, 102, 102, 0.8);	
-	padding:2px 0 3px 0;
-	margin:0 -20px 0 -20px;
-	font-size: 0.7em;
-	font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
-	border-color: rgba(051, 102, 102, 0.8);
-  	border-style: solid;
-  	border-width: 0.5px;
-  	cursor: pointer;
+  background-color:rgba(051, 102, 102, 0.8);	
+  padding:2px 0 3px 0;
+  margin: 0 -10px 0 -10px;
+  font-size: 0.7em;
+  font-family:'BebasNeueRegular', Arial, Helvetica, sans-serif;
+  border-color: rgba(051, 102, 102, 0.8);
+  border-style: solid;
+  border-width: 0.5px;
+  cursor: pointer;
 }
 
 /* 타임라인 */
@@ -68,9 +68,9 @@ body {
   z-index: 2;
 }
 
-.timelinelnner {	
+.timelineinner {	
   background-color: rgba(051, 102, 102, 0.25);
-  padding: 3px 20px 0 20px;
+  padding: 3px 10px 0 10px;
   border-radius: 10px 10px 0px 0px;  
 }
 
@@ -81,6 +81,18 @@ body {
   text-align: center;
 }
 
+ul.time-past, ul.time-future {
+  min-width: 372px;
+}
+
+ul.time-past {
+  text-align: right;
+}
+
+ul.time-future {
+  text-align: left;
+}
+
 .timeline ul {
   padding: 0;
 } 
@@ -89,7 +101,7 @@ body {
   padding: 0 10px 0;
   /* width: 18%; */
   cursor: pointer;
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 0, 0, 0.0);
   border-style: solid;
   border-width: 0.5px; 
 }
@@ -159,12 +171,18 @@ body {
   background-color: rgba(051, 102, 102, 0.3);
 }
 
+.travel-target {
+  border-style: dotted;
+  border-width: 1px;
+  border-color: rgba(0, 0, 0, 0.0);
+}
+
 .warp-target {
   border-color: rgba(255, 051, 051, 1);
   background-color: rgba(255, 051, 051, 0.5);
   border-style: dotted;
   border-width: 1px;
-  padding: 1px 4px 1px 6px;
+  /* padding: 1px 4px 1px 6px; */
 }
 
 #warpDiv {
@@ -187,7 +205,7 @@ body {
 #sigWordsWrap {
   position: absolute;
   color: white;
-  top: 18%;
+  top: 10%;
   z-index: 1;
 }
 

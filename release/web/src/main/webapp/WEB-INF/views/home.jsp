@@ -58,34 +58,34 @@
     
   <!-- Timeline 이동 -->
   <div class="timeline">
-      <div class="timelinelnner">
+      <div class="timelineinner">
         <ul class="time-past">
           <li>
-            <div class="travel-5">
+            <div class="travel-5 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-            <div class="travel-4">
+            <div class="travel-4 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-            <div class="travel-3">
+            <div class="travel-3 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-            <div class="travel-2">
+            <div class="travel-2 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-            <div class="travel-1">
+            <div class="travel-1 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
@@ -108,31 +108,31 @@
         </div>
         <ul class="time-future">
            <li>
-            <div class="travel-1">
+            <div class="travel-1 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-             <div class="travel-2">
+             <div class="travel-2 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-             <div class="travel-3">
+             <div class="travel-3 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-             <div class="travel-4">
+             <div class="travel-4 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
           </li>
           <li>
-            <div class="travel-5">
+            <div class="travel-5 travel-target">
               <span class="tr-day"></span>
               <span  class="tr-time"></span>
             </div>
