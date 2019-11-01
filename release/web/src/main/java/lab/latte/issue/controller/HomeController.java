@@ -91,7 +91,7 @@ public class HomeController<T, K, V> {
 	public Map<String, Object> searchNaver (String[] main , String keyword , String nowTime  ,
 			Model model ) throws  Exception {
 		
-		// ¸¶Áö¸·À¸·Î º¸³¾ °á°úÀÇ ÀúÀåÀå¼Ò MapÀÌ´Ù.
+		// ë³´ë‚´ì¤„ ì €ì¥ê³µê°„ ì„ ì–¸
         Map<String, Object> resultMap = new HashMap<String, Object>();
         
      
@@ -116,7 +116,7 @@ public class HomeController<T, K, V> {
 		
     	
     		
-    	//api¿Í ¿¬°áÇÏ±â À§ÇÑ ¿äÃ»	
+    	//api ìš”ì²­
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		Map<String,String> keyvalue = new HashMap<String, String>();
@@ -136,7 +136,7 @@ public class HomeController<T, K, V> {
 		JSONArray docuArray = (JSONArray)jsonObject.get("items");
 		
 		
-		//º¸³¾ Á¤º¸ ÀúÀå Àå¼Ò
+		//ì²˜ë¦¬ëœ ë°ì´í„° ì €ì¥ ì¥ì†Œ
 		List originallink = new ArrayList();
 		List description = new ArrayList();
 		List title = new ArrayList();
@@ -145,7 +145,7 @@ public class HomeController<T, K, V> {
 		
 			/* for(int i = 0 ; i <docuArray.size() ; i++) { */
 		for(int i = 0 ; i < 4 ; i++) {	
-			//Á¤º¸ Á¤Á¦ Àü ÁØºñ
+			//ë°ì´í„° ì „ì²˜ë¦¬
 			JSONObject tmp = (JSONObject)docuArray.get(i);
 			if( i < tmp.size()) {
 			String cutlink = (String)tmp.get("originallink");
@@ -153,7 +153,7 @@ public class HomeController<T, K, V> {
 			String cutdes = (String)tmp.get("description");
 			
 			
-			//´º½º 3ÁÙ ¿ä¾à 100¹®ÀÚ·Î ÀÚ¸£¸é¼­ ÀúÀåÀå¼Ò¿¡ Ãß°¡
+			//ë‰´ìŠ¤ê¸°ì‚¬ ê¸¸ì´ 100ê°œë¡œ ìë¥´ê³  ì €ì¥ê³µê°„ì— add!
 			if(cutdes.length()>100) {
 				String cutdes2 = cutdes.substring(0,100) + "...";
 					cdes.add(cutdes2);
@@ -163,19 +163,19 @@ public class HomeController<T, K, V> {
 					
 			}
 			
-		    //Á¦¸ñ ÀúÀåÀå¼Ò¿¡ Ãß°¡
+		    //íƒ€ì´ë¸” ì €ì¥ê³µê°„ì— add
 			title.add((String)tmp.get("title"));
 			
 			
-			//¿ø·¡ ¸µÅ© ÀúÀåÀå¼Ò¿¡ Ãß°¡
+			//ë§í¬ ì£¼ì†Œ ì €ì¥ê³µê°„ì— add
 			originallink.add((String)tmp.get("originallink"));
 			
 			
-			//¼³¸í¹® ÀúÀåÀå¼Ò¿¡ Ãß°¡
+			//ë‰´ìŠ¤ ë³¸ë¬¸ ì €ì¥ê³µê°„ì— add
 			description.add((String)tmp.get("description"));
 			
 			
-			//ÄÆÆÃµÈ ¼³¸í¹® ÀúÀåÀå¼Ò¿¡ Ãß°¡
+			//ê°„ëµ ì£¼ì†Œ ì €ì¥ê³µê°„ì— add
 			clink.add(cutlink2[2]);
 			}else {
 				cdes.add("");
@@ -186,7 +186,7 @@ public class HomeController<T, K, V> {
 			}
 			
 		}
-		//º¸³»±â À§ÇØ ÀúÀåÀå¼Ò¸¦ Map¿¡ ³Ö¾î ÁØ´Ù.!
+		//ajaxë¡œ ë³´ë‚´ê¸° ìœ„í•œ ê³µê°„ì— ì €ì¥ëœ ì €ì¥ê³µê°„ ì¶”ê°€!
 			resultMap.put("cdes" , cdes);		
 			resultMap.put("clink" , clink);
 			resultMap.put("description", description);
@@ -197,7 +197,7 @@ public class HomeController<T, K, V> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		//Á¤º¸´Ù °¡µæÂù MapÀ» ajax¿¡ ¸®ÅÏÇØ ÁØ´Ù.
+		//ajaxë¡œ ì „ì†¡!
     	return resultMap;
 	}
 }

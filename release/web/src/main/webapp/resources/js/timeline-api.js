@@ -13,13 +13,13 @@ function initGalaxy(){
         dataType: 'json',
         contentType: 'application/json',
         success: function(data){
-//        	console.log("success: " + 'apis/getLastTimeunit');
+
         	$('#posNum').val(0);
         	let gData = parseTimeline(data);
         	drawGalaxy(gData);
         },
         error: function(equest,status,error) {
-        	console.error("fail: " + 'apis/getLastTimeunit');
+        	/*console.error("fail: " + 'apis/getLastTimeunit');*/
         }
     });
 }
@@ -393,7 +393,8 @@ function searchingnode(node , gData ){
 	  			
 	  		}
 	  	}
-	  	//console.log(distlist)
+	  	
+	  	
 	  	
 	  	//저장 리스트 이쁘게 배열 하자
 	  	for(var i = 0 ; i< distlist.length ; i++){
@@ -406,23 +407,23 @@ function searchingnode(node , gData ){
 	  		}
 	  	}
 	  	//저장리스트에서 검색 할 것 만 뺴오자.
-	  	console.log(distlist)
+	  	
 	  	var searchnode = [];
 	  	 for(var i = 0 ; i <4 ; i++){
 	  		 try{
 	  		if(distlist[i].source['word'] != node['word']){
 	  			searchnode.push(distlist[i].source['word'])
-	  			console.log(distlist[i].source['word'])
+	  			
 	  			 
 	  		}else{
 	  			searchnode.push(distlist[i].target['word'])
-	  			console.log(distlist[i].target['word'])
+	  			
 	  		}
 	  		 }catch(e){
-	  			 console.log(e)
+	  			 /*console.log(e)*/
 	  		 }
 	  	} 
-	  	 console.log(distlist)
+	  	
 	  	 
 	  	 //검색 내용을 넘겨보까? 네이버 api이용 위해서
 	  	$.ajax({
@@ -438,8 +439,7 @@ function searchingnode(node , gData ){
 	  		},
 	  		success : function searchresult(data){
 	  			$('#loading').hide();
-	  			console.log("success searching");
-	  			console.log(data)
+	  			
 	  				
 	  			
 	  			
@@ -463,13 +463,13 @@ function searchingnode(node , gData ){
 	  				
 	  				
 	  				}catch(e){
-	  				 console.log(e)
+	  				 //console.log(e)
 	  				
 	  				} 
 	  
 	  		},
 	  			error : function searchresult(request , status , error){
-	  			console.log(error);
+	  			
 	  		}
 	  	});
 	
