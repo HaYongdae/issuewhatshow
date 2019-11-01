@@ -11,11 +11,14 @@
   <meta name="author" content="">
   <meta name="generator" content="">  
 
-  <!-- Custom styles for this template -->
-  <link href="resources/css/home.css" rel="stylesheet">
+  
   
   <!-- global resources -->
   <!-- %@ include file="global/resources_header.jsp" %--> 
+  
+  <!-- Custom styles for this template -->
+  <link href="resources/css/home.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
   
   <!-- title -->
   <title>Home</title>
@@ -217,6 +220,7 @@
   <script type="text/javascript" src="resources/third-party-etc/three-spritetext.js"></script>
   <script type="text/javascript" src="resources/third-party-etc/3d-force-graph.min.js"></script>
   <script type="text/javascript" src="resources/third-party-etc/dat.gui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
   <script type="text/javascript" src="resources/js/util.js"></script>
   <script type="text/javascript" src="resources/js/timeline-api.js"></script>
   <script type="text/javascript" src="resources/js/home.js"></script>

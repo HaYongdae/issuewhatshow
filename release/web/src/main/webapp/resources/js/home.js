@@ -177,15 +177,37 @@ function setCustomWarp(){
 	        data: JSON.stringify(parcel),
 	        contentType: 'application/json',
 	        success: function(data){
-	        	if (data.direction >= 0 ) {
-	        		if (data.direction == 1)
-	        			alert("요청한 시각과 가장 가까운 유효시점으로 이동합니다.")
+	        	console.log(data.yymmdd);
+        		console.log(data.hhmm);
+	        	if (data.direction == 0 ){
 	        		displayWarp();
 	        		$('#warpDate').val(data.yymmdd);
 	        		$('#warpTime').val(data.hhmm);
 	        		setTimeout(function(){$('#warp').submit();}, 2000);	
+	        	} else if (data.direction == 1){
+        			$.confirm({
+					    title: 'Warp point not available!',
+					    content: 
+					    	'입력하신 시각과 가장 가까운 유효시점으로 이동하시겠습니까?<br/><br/>' +
+					    	yymmddFormat("" + data.yymmdd) + " " + hhmmFormat(data.hhmm)
+					    	,
+					    buttons: {
+					        confirm: function () {
+					        	displayWarp();
+				        		$('#warpDate').val(data.yymmdd);
+				        		$('#warpTime').val(data.hhmm);
+				        		setTimeout(function(){$('#warp').submit();}, 2000);	
+					        },
+					        cancel: function () {
+					        	// Do Nothing
+					        }
+					    }
+					});
 	        	} else {
-	        		alert("요청한 시각 부근에는 유효한 데이터가 존재하지 않습니다.")
+	        		$.alert({
+	        		    title: 'Warp point not available!',
+	        		    content: '입력하신 시각 부근에는 유효한 데이터가 존재하지 않습니다.',
+	        		});
 	        	}
 	        },
 	        error: function(equest,status,error) {
