@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="lab.latte.issue.model.TimelineVO" %>
@@ -24,7 +25,8 @@
   <title>Home</title>
 </head>
 
-<body>    
+<body>   
+
   <!-- GNB -->
   <!-- %@ include file="global/gnb.jsp" %-->
 
@@ -54,6 +56,8 @@
 			    <li id="clocksec" class="clockli">00</li>
 			</ul>
 		</div>
+		
+
 	</div> 
     
   <!-- Timeline 이동 -->
@@ -160,8 +164,14 @@
       </table>
     </div>
 
+
+	<!-- 로딩 -->
+  <div id = loading></div> 
+
   <!-- 뉴스가 잘 들어가질까아? -->
+
   <div id = "newscover">
+  
 	<div id="newslist">
 		<div id="newlistcontent"></div>
 		<div class = "infonote" id="infonote0"></div>
@@ -170,7 +180,8 @@
 		<div class = "infonote" id="infonote3"></div>
 		<button id ="closenews">뉴스 닫기</button>
 	</div>
-  </div>	
+
+  </div>
 		
   <!-- 라이센스 -->
   <div id='infojs' class="infototaldiv">    
