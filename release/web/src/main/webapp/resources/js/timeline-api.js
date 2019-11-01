@@ -378,6 +378,8 @@ function setCpDefaultIfNothere(){
 
 //클릭시 창 띄우기 해보자
 function searchingnode(node , gData ){
+	//로딩 추가
+	$('#loading').show();
 
 		var swap = "";
 
@@ -435,6 +437,7 @@ function searchingnode(node , gData ){
 	  			/*'nowTime' : nowTime*/
 	  		},
 	  		success : function searchresult(data){
+	  			$('#loading').hide();
 	  			console.log("success searching");
 	  			console.log(data)
 	  				
@@ -443,31 +446,18 @@ function searchingnode(node , gData ){
 	  			
 	  			
 	  			try{
-			  			/*if( !Object.keys(data).length ){*/
+			  			
 			  			  if( !Object.keys(data).length ){
 			  				alert("뉴스를 찾을 수 없습니다.")
 			  			}else{
 			  				$("#newscover").css("display" , "block")
 			  			  for(var i=0 ; i < 4 ;i++){
-			  				  
-			  				 /* $('infonote').empty();  */
-			  				
-			  				/*$("#infonote"+i).css("display" , "block")*/
-			  				
-			
-			  				/*document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
-			  				 + "<a href = "+ data.originallink + " id = newslinkgo >" + data.originallink[i] +"</a>";*/
-			  				/*document.getElementById('infonote' + i).innerHTML = data.title[i] + "<br>"  
-			  				 + "<ul id = newslinkgo >" + data.originallink[i] +"</ul>";*/
+			  			
 			  				document.getElementById('infonote' + i).innerHTML = "<div id = 'smalllink'> " 
 			  					+ data.clink[i] + "</div>"
 			  					+ "<a href = '" + data.originallink[i] + "' target = '_blank' >" +  data.title[i] + "</a><br>"
 			  					+ " <div>" + data.cdes[i] + "</div>";
-			  				
-			  				
-
-			  				
-			  			  
+				  			  
 			  				}
 			  			}
 	  				
