@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="lab.latte.issue.model.TimelineVO" %>
@@ -165,7 +166,7 @@
 		<div class = "infonote" id="infonote1"></div>
 		<div class = "infonote" id="infonote2"></div>
 		<div class = "infonote" id="infonote3"></div>
-		<button id ="closenews" onclick="document.getElementById('newscover').style.display='none'">뉴스 닫기</button>
+		<button id ="closenews">뉴스 닫기</button>
 	</div>
   </div>	
 		

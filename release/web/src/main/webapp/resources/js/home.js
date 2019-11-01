@@ -372,15 +372,6 @@ window.onclick = function(event) {
 /* ----------------------------------------------------------------------------
  * 뉴스 닫기 기능
  */
-/*
-$("#newscover").dblclick(function(){
+$("#closenews").click(function(){
 	$("#newscover").css("display", "none")
 })
-*/
-
-var ddal = document.getElementById('newscover');
-window.ondblclick = function(event) {
-	if (event.target == ddal) {
-    	ddal.style.display = "none";
-    }
-}

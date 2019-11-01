@@ -90,11 +90,11 @@ public class HomeController<T, K, V> {
 	@ResponseBody
 	public Map<String, Object> searchNaver (String[] main , String keyword , String nowTime  ,
 			Model model ) throws  Exception {
-		/*
-		 * String clientId = "lXA5GRw7Os5t_Hs1sF28"; String clientSecret = "8DC2rlIJdi";
-		 */
-       
+		
+		// 마지막으로 보낼 결과의 저장장소 Map이다.
         Map<String, Object> resultMap = new HashMap<String, Object>();
+        
+     
 
 		try {
 
@@ -104,7 +104,7 @@ public class HomeController<T, K, V> {
 			for(int i=0; i< 3 ;i++) {
 				
 				if(i < main.length) {
-					apiURL += "+" + main[i];
+					apiURL += "+|+" + main[i];
 				}else {
 					break;
 				}
@@ -113,14 +113,16 @@ public class HomeController<T, K, V> {
 			}
     		apiURL += "&display=10&start=1&sort=sim";
     		
-		 
+		
+    	
+    		
+    	//api와 연결하기 위한 요청	
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		Map<String,String> keyvalue = new HashMap<String, String>();
 		String ID = env.getProperty("clientId");
 		String IDID = env.getProperty("clientSecret");
-		System.out.println(ID);
-		System.out.println(IDID);
+		
 		keyvalue.put("X-Naver-Client-Id" , ID);
 		keyvalue.put( "X-Naver-Client-Secret", IDID);
 		
@@ -132,32 +134,59 @@ public class HomeController<T, K, V> {
 		JSONParser jsonParser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) jsonParser.parse(response.getBody().toString());
 		JSONArray docuArray = (JSONArray)jsonObject.get("items");
+		
+		
+		//보낼 정보 저장 장소
 		List originallink = new ArrayList();
 		List description = new ArrayList();
 		List title = new ArrayList();
 		List clink = new ArrayList();
 		List cdes = new ArrayList();
 		
-		for(int i = 0 ; i <docuArray.size() ; i++) {
+			/* for(int i = 0 ; i <docuArray.size() ; i++) { */
+		for(int i = 0 ; i < 4 ; i++) {	
+			//정보 정제 전 준비
 			JSONObject tmp = (JSONObject)docuArray.get(i);
-			title.add((String)tmp.get("title"));
-			originallink.add((String)tmp.get("originallink"));
-			description.add((String)tmp.get("description"));
+			if( i < tmp.size()) {
 			String cutlink = (String)tmp.get("originallink");
 			String[] cutlink2 =	cutlink.split("/");
-			System.out.println((String)tmp.get("originallink"));
 			String cutdes = (String)tmp.get("description");
+			
+			
+			//뉴스 3줄 요약 100문자로 자르면서 저장장소에 추가
 			if(cutdes.length()>100) {
-			String cutdes2 = cutdes.substring(0,100) + "...";
-				cdes.add(cutdes2);
-			}else {
-			String cutdes2 = cutdes + "...";
-				cdes.add(cutdes2);
-				
+				String cutdes2 = cutdes.substring(0,100) + "...";
+					cdes.add(cutdes2);
+				}else{	
+				String cutdes2 = cutdes + "...";
+					cdes.add(cutdes2);
+					
 			}
+			
+		    //제목 저장장소에 추가
+			title.add((String)tmp.get("title"));
+			
+			
+			//원래 링크 저장장소에 추가
+			originallink.add((String)tmp.get("originallink"));
+			
+			
+			//설명문 저장장소에 추가
+			description.add((String)tmp.get("description"));
+			
+			
+			//컷팅된 설명문 저장장소에 추가
 			clink.add(cutlink2[2]);
+			}else {
+				cdes.add("");
+				title.add("");
+				originallink.add("");
+				description.add("");
+				clink.add("");
+			}
 			
 		}
+		//보내기 위해 저장장소를 Map에 넣어 준다.!
 			resultMap.put("cdes" , cdes);		
 			resultMap.put("clink" , clink);
 			resultMap.put("description", description);
@@ -168,7 +197,7 @@ public class HomeController<T, K, V> {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		//정보다 가득찬 Map을 ajax에 리턴해 준다.
     	return resultMap;
 	}
 }

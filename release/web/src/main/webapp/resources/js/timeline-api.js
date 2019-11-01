@@ -437,12 +437,14 @@ function searchingnode(node , gData ){
 	  		success : function searchresult(data){
 	  			console.log("success searching");
 	  			console.log(data)
+	  				
 	  			
 	  			
 	  			
 	  			
 	  			try{
-			  			if( !Object.keys(data).length ){
+			  			/*if( !Object.keys(data).length ){*/
+			  			  if( !Object.keys(data).length ){
 			  				alert("뉴스를 찾을 수 없습니다.")
 			  			}else{
 			  				$("#newscover").css("display" , "block")
@@ -459,9 +461,11 @@ function searchingnode(node , gData ){
 			  				 + "<ul id = newslinkgo >" + data.originallink[i] +"</ul>";*/
 			  				document.getElementById('infonote' + i).innerHTML = "<div id = 'smalllink'> " 
 			  					+ data.clink[i] + "</div>"
-			  					+ "<a href = '" + data.originallink[i] 
-			  					+ "'  target = '_blank' >" +  data.title[i] + "</a><br>"
+			  					+ "<a href = '" + data.originallink[i] + "' target = '_blank' >" +  data.title[i] + "</a><br>"
 			  					+ " <div>" + data.cdes[i] + "</div>";
+			  				
+			  				
+
 			  				
 			  			  
 			  				}
