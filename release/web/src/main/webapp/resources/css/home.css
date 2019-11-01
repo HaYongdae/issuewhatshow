@@ -329,10 +329,10 @@ ul.time-future {
 #newscover {
   display:none;
   position : absolute;
-  top:18%;
+  top:10%;
   right:-0%;
   width : 260px;
-  height: 475px;
+  height: 530px;
   overflow:hidden;
   border-radius: 10px 0px 0px 10px;
   background:rgba(051, 102, 102, 0.25);
@@ -340,6 +340,7 @@ ul.time-future {
 }
 
 #newslist {
+	margin: 18px 0px 0px 0px;
 	    
 }
  	
@@ -349,26 +350,27 @@ ul.time-future {
 }
 
 #smalllink {
-  font-size:2px;
+  font-size:1px;
   color:white;
   bottom:0px;
   padding:0px;	
 }
 
 div[id *="infonote"] {
-  background:rgba( 255, 255, 255, 0.01 );
-  width: 92%;
+  
+  width: 90%;
   background-color: rgba(051, 102, 102, 0.25);
-  border-radius: 0px 10px 10px 0px;
+  
   right:-10%;
-  margin: 5px 1px 6px 10px;
-  padding:0px;
+  margin: 5px 5px 8px 5px;
+  padding: 4px;
   color : white;	
-  height:100px;	 
+  height:100px;
+  border-radius : 3px;	 
     
   text-align:left;
   text-overflow:ellipsis; 
-  border-radius: 3px 3px 3px 3px; 	 
+  border-radius: 4px;	 
   
 }
 
@@ -384,13 +386,13 @@ div[id *="infonote"] a {
 }
 
 .infonote div {
-  font-size : 8px;	
+  font-size : 7px;	
   text-overflow:ellipsis;	
   font-weight: 100;
 }
 
 #closenews {
-  margin : 2px 40px 2px 90px;
+  margin : 8px 40px 2px 90px;
   float:center;
   
 }
@@ -498,11 +500,12 @@ h1 {
  */
 #loading {
   display: none;
-  width: 50px;
-  height: 50px;
-  border: 5px solid rgba(34,113,227,0.54);
+  width: 70px;
+  height: 70px;
+  /* border: 5px solid rgba(34,113,227,0.54); */
+  border: 10px solid rgba(255 , 255 , 255 , 1);
   border-radius: 50%;
-  border-top-color: #fff;
+  border-top-color: #000;
   animation: spin 1s ease-in-out infinite;
   -webkit-animation: spin 1s ease-in-out infinite;
   

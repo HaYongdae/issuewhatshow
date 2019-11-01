@@ -148,42 +148,45 @@ public class HomeController<T, K, V> {
 			//데이터 전처리
 			JSONObject tmp = (JSONObject)docuArray.get(i);
 			if( i < tmp.size()) {
-			String cutlink = (String)tmp.get("originallink");
-			String[] cutlink2 =	cutlink.split("/");
-			String cutdes = (String)tmp.get("description");
-			
-			
-			//뉴스기사 길이 100개로 자르고 저장공간에 add!
-			if(cutdes.length()>100) {
-				String cutdes2 = cutdes.substring(0,100) + "...";
-					cdes.add(cutdes2);
-				}else{	
-				String cutdes2 = cutdes + "...";
-					cdes.add(cutdes2);
 					
-			}
+						String cutlink = (String)tmp.get("originallink");
+						String[] cutlink2 =	cutlink.split("/");
+						String cutdes = (String)tmp.get("description");
+						
+						
+							//뉴스기사 길이 100개로 자르고 저장공간에 add!
+							if(cutdes.length()>80) {
+								String cutdes2 = cutdes.substring(0,80) + "...";
+									cdes.add(cutdes2);
+								}else{	
+								String cutdes2 = cutdes + "...";
+									cdes.add(cutdes2);
+				
+								}
+							
+					    //타이블 저장공간에 add
+						title.add((String)tmp.get("title"));
+						//뉴스 본문 저장공간에 add
+						description.add((String)tmp.get("description"));
 			
-		    //타이블 저장공간에 add
-			title.add((String)tmp.get("title"));
-			
-			
-			//링크 주소 저장공간에 add
-			originallink.add((String)tmp.get("originallink"));
-			
-			
-			//뉴스 본문 저장공간에 add
-			description.add((String)tmp.get("description"));
-			
-			
-			//간략 주소 저장공간에 add
-			clink.add(cutlink2[2]);
+						//링크 주소 저장공간에 add
+						//간략 주소 저장공간에 add
+						if(((String)tmp.get("originallink")).length() != 0) {
+							originallink.add((String)tmp.get("originallink"));
+							clink.add(cutlink2[2]);
+						}else {
+							clink.add("");
+							originallink.add("");
+						}
+						
+						
 			}else {
 				cdes.add("");
 				title.add("");
 				originallink.add("");
 				description.add("");
 				clink.add("");
-			}
+				}
 			
 		}
 		//ajax로 보내기 위한 공간에 저장된 저장공간 추가!
