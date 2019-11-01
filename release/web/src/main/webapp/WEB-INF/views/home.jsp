@@ -168,7 +168,7 @@
 		<div class = "infonote" id="infonote1"></div>
 		<div class = "infonote" id="infonote2"></div>
 		<div class = "infonote" id="infonote3"></div>
-		<button id ="closenews" onclick="document.getElementById('newscover').style.display='none'">뉴스 닫기</button>
+		<button id ="closenews">뉴스 닫기</button>
 	</div>
   </div>	
 		
