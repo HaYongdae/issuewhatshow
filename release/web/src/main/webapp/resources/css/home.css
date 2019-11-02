@@ -350,7 +350,7 @@ ul.time-future {
 }
 
 #smalllink {
-  font-size:1px;
+  font-size:9px;
   color:white;
   bottom:0px;
   padding:0px;	
@@ -386,7 +386,7 @@ div[id *="infonote"] a {
 }
 
 .infonote div {
-  font-size : 7px;	
+  font-size : 9px;	
   text-overflow:ellipsis;	
   font-weight: 100;
 }
@@ -500,10 +500,10 @@ h1 {
  */
 #loading {
   display: none;
-  width: 70px;
-  height: 70px;
+  width: 200px;
+  height: 200px;
   /* border: 5px solid rgba(34,113,227,0.54); */
-  border: 10px solid rgba(255 , 255 , 255 , 1);
+  border: 15px solid rgba(255 , 255 , 255 , 1);
   border-radius: 50%;
   border-top-color: #000;
   animation: spin 1s ease-in-out infinite;
@@ -512,8 +512,8 @@ h1 {
   position:absolute;
   top:50%;
   left:50%; 
-  margin-top:-50px; 
-  margin-left:-50px;
+  margin-top:-150px; 
+  margin-left:-150px;
 
 
  
