@@ -3,6 +3,9 @@
 /**
  * home.css
  */
+ 
+@import url(https://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+ 
 body { 
   color: #FFF;
   margin: 0; 
