@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
   
   <!-- title -->
-  <title>Home</title>
+  <title>잇슈왓슈 - IssueWhatShow</title>
 </head>
 
 <body>   

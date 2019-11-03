@@ -41,7 +41,13 @@ $(document).ready(function(){
     setClock();
     
     // 모두 완료되면 계기판들 슬라이드 아웃 시키기
-    sigRight();
+    // 브리핑 키워드는 나오지 않고 시계와 워프 계기판만 보여주게 변경
+    // sigRight();
+    if (g_init) {
+    	g_init = false;
+    	setTimeout(function(){dropClock();}, 300);
+    	setTimeout(function(){liftWarp();}, 300);
+    }
 	
 
     
