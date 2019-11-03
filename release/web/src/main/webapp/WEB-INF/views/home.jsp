@@ -42,7 +42,7 @@
   </div>
         
   <!-- 사이트 로고 -->
-  <div id="spacehorseDiv"><img id="spacehorse" src="resources/images/latteishorse.png"/></div>
+  <div id="spacehorseDiv"><img id="spacehorse" src="resources/images/logo.png"/></div>
        
   <!-- 시계 -->
   <div class="clockcontainer">
