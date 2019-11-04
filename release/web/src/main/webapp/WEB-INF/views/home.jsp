@@ -189,20 +189,24 @@
     <button onclick="document.getElementById('infojs').style.display='none'" id="xbutton">&times;</button>
 	  <div id="infoneyong">          
 	    <h2>References &amp; Open sources</h2>
-       	<p>&nbsp;</p>
-        <h3>시각화 라이브러리</h3>
-       	<h4>3d-force-graph<span>, MIT License&nbsp;&nbsp;</span><a href="https://github.com/vasturiano/3d-force-graph" target="_blank">github.com/vasturiano/3d-force-graph</a></h4>
-        <h3>형태소 분석기</h3>
-       	<h4>Khaiii<span>, Apache License v2.0&nbsp;&nbsp;</span><a href="https://github.com/kakao/khaiii" target="_blank">github.com/kakao/khaiii</a></h4>
-       	<h4>Komoran<span>, Apache License v2.0&nbsp;&nbsp;</span><a href="https://www.shineware.co.kr/products/komoran/" target="_blank">shineware.co.kr/products/komoran</a></h4>
-        <h3>적용한 NLP 이론</h3>
-        <h4>word2vec<span>, Paper&nbsp;&nbsp;</span><a href="https://en.wikipedia.org/wiki/Word2vec" target="_blank">en.wikipedia.org/wiki/Word2vec</a></h4>
-        <h4>TF-IDF<span>, Paper&nbsp;&nbsp;</span><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf" target="_blank">en.wikipedia.org/wiki/Tf-idf</a></h4>
-        <h3>그리고 많은 오픈소스 라이브러리들</h3>
-       	<h4>NAVER 뉴스 + API, DAUM 뉴스, Twitter API, cloudflare, Google CDN, BeautifulSoup4, pandas, yweather, numpy, konlpy, gensim...</h4>
-        <h4>and many...</h4>      
+        <h4>시각화 라이브러리</h4>
+       	<h5>3d-force-graph<span>, MIT License&nbsp;&nbsp;</span><a href="https://github.com/vasturiano/3d-force-graph" target="_blank">github.com/vasturiano/3d-force-graph</a></h5>
+        <hr>
+        <h4>형태소 분석기</h4>
+       	<h5>Khaiii<span>, Apache License v2.0&nbsp;&nbsp;</span><a href="https://github.com/kakao/khaiii" target="_blank">github.com/kakao/khaiii</a></h5>
+       	<h5>Komoran<span>, Apache License v2.0&nbsp;&nbsp;</span><a href="https://www.shineware.co.kr/products/komoran/" target="_blank">shineware.co.kr/products/komoran</a></h5>
+        <hr>
+        <h4>적용한 NLP 이론</h4>
+        <h5>word2vec<span>, Paper&nbsp;&nbsp;</span><a href="https://en.wikipedia.org/wiki/Word2vec" target="_blank">en.wikipedia.org/wiki/Word2vec</a></h5>
+        <h5>TF-IDF<span>, Paper&nbsp;&nbsp;</span><a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf" target="_blank">en.wikipedia.org/wiki/Tf-idf</a></h5>
+        <hr>
+        <h4>그리고 많은 오픈소스 라이브러리들</h4>
+       	<h5>NAVER 뉴스 + API, DAUM 뉴스, Twitter API, cloudflare, Google CDN, BeautifulSoup4, pandas, yweather, numpy, konlpy, gensim...</h5>
+        <h5>and many...</h5>    
+        <div class="infoclosediv">
+          <button onclick="document.getElementById('infojs').style.display='none'" id="closebutton">Close</button> 
+        </div> 
        </div>
-  	<button onclick="document.getElementById('infojs').style.display='none'" id="closebutton">Close</button>
     </div>    
   </div>		    
   <!-- Main Contents [END] -->

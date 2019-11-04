@@ -422,6 +422,7 @@ div[id *="infonote"] a {
   outline:0;
   width:600px;
   border:1px solid rgba( 051, 102, 102, 1 );
+  border-radius: 10px;
 }
     
 #xbutton {
@@ -431,9 +432,9 @@ div[id *="infonote"] a {
 }
    
 #infoneyong {
-  padding-left:40px;
-  padding-top:10px;
+  padding: 4px 40px 4px 40px;
 }
+
 
 #infoneyong a {
   text-decoration: none;
@@ -445,7 +446,12 @@ div[id *="infonote"] a {
 }
    
 #closebutton {
-  float:right;
+  /* float:right; */
+}
+
+.infoclosediv {
+  width: 100%;
+  text-align: center;
 }
 
 /* 버튼디자인 공용 */
