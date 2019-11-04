@@ -9,6 +9,8 @@ public interface ITimelineDAO<T, K, V> {
 	
 	public TimelineVO getLastTimeunit();
 	public TimelineVO getTimeunitByTime(Map<K, V> map);
+	public int isExistTimeunit(Map<K, V> map);
+	public List<T> getAroundTimeunit(Map<K, V> map);
 	public TimelineVO getTimeunitByPos(int pos);
 	public List<T> getPastTimeline(Map<K, V> map);
 	public List<T> getFutureTimeline(Map<K, V> map);

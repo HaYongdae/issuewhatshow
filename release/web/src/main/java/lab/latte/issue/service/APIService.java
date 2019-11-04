@@ -25,6 +25,16 @@ public class APIService<T, K, V> implements IAPIService<T, K, V> {
 	public TimelineVO getTimeunitByTime(Map<K, V> map) {
 		return dao.getTimeunitByTime(map);
 	}
+	
+	@Override
+	public int isExistTimeunit(Map<K, V> map) {
+		return dao.isExistTimeunit(map);
+	}
+	
+	@Override
+	public List<T> getAroundTimeunit(Map<K, V> map) {
+		return dao.getAroundTimeunit(map);
+	}
 
 	@Override
 	public TimelineVO getTimeunitByPos(int pos) {

@@ -26,6 +26,8 @@ $(document).ready(function(){
 	writeTimeline(elData['yymmdd'], zeroPad(elData['hhmm'], 1000));
 	// 계기판에 버튼 기능 넣기
 	setTimeTravel(elData['yymmdd'], elData['hhmm']);
+	// 사용자 지정 워프 기능 넣기
+	setCustomWarp();
 	
 	// 중요 단어 brief 그리기
 	writeSigwords();
@@ -39,7 +41,13 @@ $(document).ready(function(){
     setClock();
     
     // 모두 완료되면 계기판들 슬라이드 아웃 시키기
-    sigRight();
+    // 브리핑 키워드는 나오지 않고 시계와 워프 계기판만 보여주게 변경
+    // sigRight();
+    if (g_init) {
+    	g_init = false;
+    	setTimeout(function(){dropClock();}, 300);
+    	setTimeout(function(){liftWarp();}, 300);
+    }
 	
 
     
@@ -100,12 +108,22 @@ function writeTimeline(yymmdd, hhmm){
         		let timeSelector = selector + ".tr-time";
         		$(dateSelector).html(yymmddFormat(""+past[i].yymmdd));
         		$(timeSelector).html(hhmmFormat(""+past[i].hhmm));
+        		$(dateSelector).parent().parent().css("border-color", "rgba(255, 255, 255, 0.1)");		
         		idx++;
         	}
         	
         	// 현재
+        	/*
         	$('#travelDay').html(yymmddFormat(yymmdd));
         	$('#travelTime').html(hhmmFormat(hhmm));
+        	*/
+        	let arryymmdd = yymmddFormat(yymmdd).split(".");
+        	let arrhhmm = hhmmFormat(hhmm).split(":");
+        	$('#tYear').val(arryymmdd[0]);
+        	$('#tMonth').val(arryymmdd[1]);
+        	$('#tDay').val(arryymmdd[2]);
+        	$('#tHour').val(arrhhmm[0]);
+        	$('#tMinute').val(arrhhmm[1]);
         	$('.travel-center').addClass('brdr-cyan');
 
         	// 미래
@@ -116,6 +134,7 @@ function writeTimeline(yymmdd, hhmm){
         		let timeSelector = selector + ".tr-time";
         		$(dateSelector).html(yymmddFormat(""+future[i].yymmdd));
         		$(timeSelector).html(hhmmFormat(""+future[i].hhmm));
+        		$(dateSelector).parent().parent().css("border-color", "rgba(255, 255, 255, 0.1)");
         	}
         },
         error: function(equest,status,error) {
@@ -131,16 +150,8 @@ function writeTimeline(yymmdd, hhmm){
 function setTimeTravel() {
 	let arrWormHole = $(".timeline ul li span").parent();
 	arrWormHole.each((i, hole) => $(hole).click(function(){
-		$('#warpDiv').css("display", "inherit");
-		g_timer = setInterval(function(){
-			let opacity = $('#warpDiv').css("opacity")
-			if (opacity >= 0.9) {
-				clearInterval(g_timer);
-			} else {
-				$('#warpDiv').css("opacity", parseFloat(opacity) + 0.005);
-			}
-		}, 10);
-		let yymmdd = $(hole).find('.tr-day').html().split("/").join("");
+		displayWarp();
+		let yymmdd = $(hole).find('.tr-day').html().split(".").join("");
 		let hhmm = $(hole).find('.tr-time').html().split(":").join("");
 		
 		$(hole).addClass("warp-target");
@@ -149,6 +160,70 @@ function setTimeTravel() {
 		$('#warpTime').val(hhmm);
 		setTimeout(function(){$('#warp').submit();}, 2000);	
 	}));
+}
+
+
+function setCustomWarp(){
+	$('#btnCustomWarp').click(function(){
+		let yymmdd = 
+			zeroPad($('#tYear').val().substr(2), 1000) + 
+			zeroPad($('#tMonth').val(), 10) + 
+			zeroPad($('#tDay').val(), 10);
+		let hhmm = 
+			zeroPad($('#tHour').val(), 10) + 
+			zeroPad($('#tMinute').val(), 10)
+		
+		let parcel = {
+			'yymmdd' : yymmdd,
+			'hhmm' : hhmm
+		};
+		
+		$.ajax({
+	        url: 'apis/getAround',
+	        type: 'post',
+	        dataType: 'json',
+	        data: JSON.stringify(parcel),
+	        contentType: 'application/json',
+	        success: function(data){
+	        	console.log(data.yymmdd);
+        		console.log(data.hhmm);
+	        	if (data.direction == 0 ){
+	        		displayWarp();
+	        		$('#warpDate').val(data.yymmdd);
+	        		$('#warpTime').val(data.hhmm);
+	        		setTimeout(function(){$('#warp').submit();}, 2000);	
+	        	} else if (data.direction == 1){
+        			$.confirm({
+					    title: 'Warp point not available!',
+					    content: 
+					    	'입력하신 시각과 가장 가까운 유효시점으로 이동하시겠습니까?<br/><br/>' +
+					    	yymmddFormat("" + data.yymmdd) + " " + hhmmFormat(data.hhmm)
+					    	,
+					    buttons: {
+					        confirm: function () {
+					        	displayWarp();
+				        		$('#warpDate').val(data.yymmdd);
+				        		$('#warpTime').val(data.hhmm);
+				        		setTimeout(function(){$('#warp').submit();}, 2000);	
+					        },
+					        cancel: function () {
+					        	// Do Nothing
+					        }
+					    }
+					});
+	        	} else {
+	        		$.alert({
+	        		    title: 'Warp point not available!',
+	        		    content: '입력하신 시각 부근에는 유효한 데이터가 존재하지 않습니다.',
+	        		});
+	        	}
+	        },
+	        error: function(equest,status,error) {
+	        	console.error("fail: " + 'apis/getPastTimeline');
+	        }
+	    });
+		
+	});
 }
 
 
@@ -298,3 +373,35 @@ function liftWarp(){
 	}, 10);
 }
 
+
+/* ----------------------------------------------------------------------------
+ * 워프 gif 활성화
+ */
+function displayWarp(){
+	$('#warpDiv').css("display", "inherit");
+	g_timer = setInterval(function(){
+		let opacity = $('#warpDiv').css("opacity")
+		if (opacity >= 0.9) {
+			clearInterval(g_timer);
+		} else {
+			$('#warpDiv').css("opacity", parseFloat(opacity) + 0.005);
+		}
+	}, 10);
+}
+
+/* ----------------------------------------------------------------------------
+ * 라이센스 기능 활성화
+ */
+var modal = document.getElementById('infojs');
+window.onclick = function(event) {
+	if (event.target == modal) {
+    	modal.style.display = "none";
+    }
+}
+
+/* ----------------------------------------------------------------------------
+ * 뉴스 닫기 기능
+ */
+$("#closenews").click(function(){
+	$("#newscover").css("display", "none")
+})

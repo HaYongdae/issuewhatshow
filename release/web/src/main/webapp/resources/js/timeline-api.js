@@ -13,13 +13,13 @@ function initGalaxy(){
         dataType: 'json',
         contentType: 'application/json',
         success: function(data){
-//        	console.log("success: " + 'apis/getLastTimeunit');
+
         	$('#posNum').val(0);
         	let gData = parseTimeline(data);
         	drawGalaxy(gData);
         },
         error: function(equest,status,error) {
-        	console.error("fail: " + 'apis/getLastTimeunit');
+        	/*console.error("fail: " + 'apis/getLastTimeunit');*/
         }
     });
 }
@@ -219,6 +219,8 @@ function drawGalaxy(gData){
 		//.linkDirectionalParticles(3)
 		.linkOpacity(0.08)
 		.nodeVisibility( node => node.val >= settings.NodeThreshold);
+		//오른쪽 클릭 하면 검색! 
+		g_graph.onNodeClick(node => searchingnode(node , gData));
 		
 	//g_graph.d3Force('charge').strength(-500);
 
@@ -266,6 +268,8 @@ function reDrawGalaxy(gData){
 	nodeIds.forEach((d, i) => nodes.slice(d.id, 1));
 	
 	g_graph.graphData(gData);
+	//오른쪽 클릭 하면 검색! 
+	g_graph.onNodeClick(node => searchingnode(node , gData));
 }
 
 
@@ -368,4 +372,112 @@ function setCpDefaultIfNothere(){
 		);
 	}
 }
+/*-----------------------------------------------------------------------------
+ * 뉴스뛰우기 해보자
+ */
+
+//클릭시 창 띄우기 해보자
+function searchingnode(node , gData ){
+	//로딩 추가
+	$('#loading').show();
+
+		var swap = "";
+
+	  	
+	  	//이번에는 거리로 해보자.
+	  	//저장 리스트 
+	  	var distlist = [];
+	  	for(var i = 0 ; i<gData['links'].length ; i++){
+	  		if(node['word'] == gData['links'][i].source['word'] || node['word'] == gData['links'][i].target['word']){
+	  			distlist.push(gData['links'][i])
+	  			
+	  		}
+	  	}
+	  	
+	  	
+	  	
+	  	//저장 리스트 이쁘게 배열 하자
+	  	for(var i = 0 ; i< distlist.length ; i++){
+	  		for(var j = 1 ; j<distlist.length ; j++){
+	  			if(distlist[j-1].dist > distlist[j].dist){
+	  				swap = distlist[j-1]
+	  				distlist[j-1] = distlist[j]
+	  				distlist[j] = swap
+	  			}
+	  		}
+	  	}
+	  	//저장리스트에서 검색 할 것 만 뺴오자.
+	  	
+	  	var searchnode = [];
+	  	 for(var i = 0 ; i <4 ; i++){
+	  		 try{
+	  		if(distlist[i].source['word'] != node['word']){
+	  			searchnode.push(distlist[i].source['word'])
+	  			
+	  			 
+	  		}else{
+	  			searchnode.push(distlist[i].target['word'])
+	  			
+	  		}
+	  		 }catch(e){
+	  			 /*console.log(e)*/
+	  		 }
+	  	} 
+	  	
+	  	 
+	  	 //검색 내용을 넘겨보까? 네이버 api이용 위해서
+	  	$.ajax({
+	  		method : 'post',
+	  		url : 'api/searching',
+	  		traditional : true,
+	  		dataType : "json",
+	 		//contentType: "application/json;charset=utf-8",
+	  		data : {
+	  			'main' : searchnode,
+	  			'keyword' : node['word'],
+	  			/*'nowTime' : nowTime*/
+	  		},
+	  		success : function searchresult(data){
+	  			$('#loading').hide();
+	  			
+	  				
+	  			
+	  			
+	  			
+	  			
+	  			try{
+			  			
+			  			  if( !Object.keys(data).length ){
+			  				alert("뉴스를 찾을 수 없습니다.")
+			  			}else{
+			  				$("#newscover").css("display" , "block")
+			  			  for(var i=0 ; i < 4 ;i++){
+			  			
+			  				document.getElementById('infonote' + i).innerHTML = "<div id = 'smalllink'> " 
+			  					+ data.clink[i] + "</div>"
+			  					+ "<a href = '" + data.originallink[i] + "' target = '_blank' >" +  data.title[i] + "</a><br>"
+			  					+ " <div>" + data.cdes[i] + "</div>";
+				  			  
+			  				}
+			  			}
+	  				
+	  				
+	  				}catch(e){
+	  				 //console.log(e)
+	  				
+	  				} 
+	  
+	  		},
+	  			error : function searchresult(request , status , error){
+	  			
+	  		}
+	  	});
+	
+	
+	}
+
+
+  
+
+	
 

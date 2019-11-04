@@ -10,6 +10,8 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	
 	<!--  util:properties id="envs" location="classpath:/properties/envs.properties" / --> 
+	<!-- 이게 왜 추가되는지 모르겠다!!! -->
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate"/>
 	
 	<bean id="envProperties"
       class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -26,6 +28,8 @@
 		<property name="username" value="#{envProperties['db_username']}"/> 
 		<property name="password" value="#{envProperties['db_password']}"/> 
 	</bean>
+	
+
 
 
 	<!-- SqlSessionFactoryBean --> 
