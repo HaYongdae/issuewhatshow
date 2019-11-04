@@ -434,6 +434,15 @@ div[id *="infonote"] a {
   padding-left:40px;
   padding-top:10px;
 }
+
+#infoneyong a {
+  text-decoration: none;
+  color: orange;
+}
+
+#infoneyong span {
+  color: skyblue;
+}
    
 #closebutton {
   float:right;
@@ -490,7 +499,6 @@ button:hover:before,button:hover:after{
     font-weight: 600;
 }
 
-
 @import url(https://fonts.googleapis.com/css?family=Roboto:100);
 
 /* body { margin-top: 100px; background-color: #137b85; color: #fff; text-align:center; }
@@ -516,10 +524,6 @@ h1 {
   left:50%; 
   margin-top:-150px; 
   margin-left:-150px;
-
-
- 
-  
 }
 
 @keyframes spin {
